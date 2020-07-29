@@ -48,12 +48,11 @@
 </script>
 
 <style lang="scss">
-  @import '~/assets/scss/bootstrap-var.scss';
   .value-tree-comp {
     position: fixed;
     top: 0;
     right: 0;
 
-    z-index: $zindex-fixed;
+    //z-index: $zindex-fixed;
   }
 </style>
