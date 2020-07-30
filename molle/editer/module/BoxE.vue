@@ -56,6 +56,8 @@
     styleProfile: StyleProfile = new StyleProfile({
       container: true,
       border: false,
+      margin: "",
+      padding: "",
       // theme: {default: "", select: ["", "test"]},
       // color: {default: "", select: ["", "dark"]},
     });

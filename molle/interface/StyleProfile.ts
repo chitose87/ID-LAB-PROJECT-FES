@@ -8,6 +8,8 @@ export interface IStyleStoreData {
   border?: boolean
   container?: boolean
   align?: string
+  margin?: string
+  padding?: string
   theme?: string
   color?: string
 }
@@ -25,6 +27,8 @@ export class StyleProfile {
     border?: boolean,
     container?: boolean,
     align?: StyleAlign,
+    margin?: String,
+    padding?: String,
     theme?: { default: string, select: string[] },
     color?: { default: string, select: string[] },
   }) {
@@ -54,3 +58,4 @@ export const StyleAlign = {
   Right: {value: "text-right", label: "right"},
 } as const;
 type StyleAlign = typeof StyleAlign[keyof typeof StyleAlign];
+
