@@ -5,6 +5,7 @@
       .list-group(v-if="toggle")
         ModuleTreeItemComp.pr-3(
           v-for="item in getTree()"
+          :key="item.itemId"
           :vueRef="item"
         )
 

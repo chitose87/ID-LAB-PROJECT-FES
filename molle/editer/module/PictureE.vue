@@ -10,7 +10,7 @@
 
     picture(
     )
-      source(v-if="getValue('sp')" media="(max-width: 767px)" :srcset="getValue('sp')" :alt="getValue('alt')")
+      source(v-if="getValue('sp')" media="(max-width:"+(process.env.breakPoint - 1)+"px)" :srcset="getValue('sp')" :alt="getValue('alt')")
       img(
         :src="getValue('src')" :alt="getValue('alt')"
         :class="getClass(itemData)"

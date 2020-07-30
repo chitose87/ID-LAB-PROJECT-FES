@@ -27,6 +27,7 @@
     .list-group.mt-3(v-if="tree.length")
       ModuleTreeItemComp(
         v-for="item in tree"
+        :key="item.itemId"
         :vueRef="item"
       )
 

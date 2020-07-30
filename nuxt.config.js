@@ -1,5 +1,14 @@
 require('dotenv').config();
 
+const env = {
+  breakPoint: 768,
+};
+let envStr = "";
+for (let i in env) {
+  envStr += `$${i}:${env[i]};`;
+}
+Object.assign(process.env, env);
+
 const firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/firestore");
@@ -28,9 +37,6 @@ export default {
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
-  },
-  env: {
-    hoge: '#F00',
   },
   /*
   ** Customize the progress-bar color
@@ -89,6 +95,18 @@ export default {
       video: ({isDev}) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
     },
     extend(config, ctx) {
+      config.module.rules.forEach((rule) => {
+        rule.oneOf && rule.oneOf.forEach((item) => {
+          item.use.forEach((loader) => {
+            if (loader.loader === "sass-loader") {
+              Object.assign(loader.options, {
+                prependData: envStr
+              });
+              // console.log(loader.options);
+            }
+          })
+        })
+      })
     }
   },
   generate: {

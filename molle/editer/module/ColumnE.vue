@@ -14,6 +14,7 @@
         ColumnBoxE(
           v-for="child in children"
           v-if="child"
+          :key="child.id"
           :itemId="child.id"
         )
 
