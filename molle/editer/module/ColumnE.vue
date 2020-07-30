@@ -18,7 +18,7 @@
           :itemId="child.id"
         )
 
-        .column__item.w-100.text-center.pt-0(v-if="isEditing()")
+        .column__item.bootstrap.w-100.text-center.pt-0(v-if="isEditing()")
           button.btn.btn-sm.btn-primary(@click="addChild(InitialValue.Box)")
             span カラム追加
 

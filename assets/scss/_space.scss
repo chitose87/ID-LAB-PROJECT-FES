@@ -1,0 +1,81 @@
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+    (
+      0: 0,
+      1: $spacer,
+      2: ($spacer * 2),
+      3: ($spacer * 3),
+      4: ($spacer * 4),
+      5: ($spacer * 5),
+    ),
+    $spacers
+);
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  //space
+  @each $size, $value in $spacers {
+    @each $rate, $lable in (0:"", 1:"q", 2:"q2", 3:"q3") {
+      $v: $value+($spacer/4*$rate);
+
+      .#{$abbrev}-#{$size}#{$lable} {
+        #{$prop}: $v !important;
+      }
+      @if $size != 0 {
+        .#{$abbrev}-n#{$size}#{$lable} {
+          #{$prop}: -$v !important;
+        }
+      }
+      @each $trblLong, $trblShort in (top:t, right:r, bottom:b, left:l) {
+        .#{$abbrev}#{$trblShort}-#{$size}#{$lable} {
+          #{$prop}-#{$trblLong}: $v !important;
+        }
+        @if $size != 0 {
+          .#{$abbrev}#{$trblShort}-n#{$size}#{$lable} {
+            #{$prop}-#{$trblLong}: -$v !important;
+          }
+        }
+      }
+    }
+  }
+
+  //gutter
+  @each $rate, $lable in (4:"", 1:"_q", 2:"_q2", 3:"_q3") {
+    $v: ($gutter/4 * $rate);
+    .#{$abbrev}-g#{$lable} {
+      #{$prop}: $v !important;
+    }
+    .#{$abbrev}-ng#{$lable} {
+      #{$prop}: -$v !important;
+    }
+    @each $trblLong, $trblShort in (top:t, right:r, bottom:b, left:l) {
+      .#{$abbrev}#{$trblShort}-g#{$lable} {
+        #{$prop}-#{$trblLong}: $v !important;
+      }
+      .#{$abbrev}#{$trblShort}-ng#{$lable} {
+        #{$prop}-#{$trblLong}: -$v !important;
+      }
+    }
+  }
+}
+
+//auto
+.m-auto {
+  margin: auto !important;
+}
+
+.mt-auto {
+  margin-top: auto !important;
+}
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+.mb-auto {
+  margin-bottom: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}

@@ -4,6 +4,7 @@
 $rem: 16px;
 $gutter: 2rem;
 $size-container: ($rem * 5 * 12) + ($rem * 2 * 11) + ($rem * 2 * 2);
+$spacer: 1rem !default;
 
 @import "color";
 @import "screen";
@@ -11,4 +12,3 @@ $size-container: ($rem * 5 * 12) + ($rem * 2 * 11) + ($rem * 2 * 2);
 @import "zindex";
 @import "ease";
 @import "shadow";
-
