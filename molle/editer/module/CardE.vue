@@ -13,21 +13,23 @@
       :class="getClass(itemData)"
     )
 
-      PictureE(
-        :itemId="getMemberItemId('img')"
-        :notDeleted="true"
-        :required="true"
-      )
+      div
+        PictureE(
+          :itemId="getMemberItemId('img')"
+          :notDeleted="true"
+          :required="true"
+        )
 
-      HeadlineE(
-        :itemId="getMemberItemId('title')"
-        :notDeleted="true"
-      )
+        .left
+          HeadlineE(
+            :itemId="getMemberItemId('title')"
+            :notDeleted="true"
+          )
 
-      ParagraphE(
-        :itemId="getMemberItemId('description')"
-        :notDeleted="true"
-      )
+          ParagraphE(
+            :itemId="getMemberItemId('description')"
+            :notDeleted="true"
+          )
 
 </template>
 

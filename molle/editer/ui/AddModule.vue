@@ -25,10 +25,8 @@
 
     pushModule() {
       // @ts-ignore
-      let data: IItemStoreData = InitialValue[this.pushModuleSelected] || {
-        moduleId: this.pushModuleSelected,
-        option: {}
-      };
+      let data: IItemStoreData = InitialValue[this.pushModuleSelected]
+        || InitialValue.Group(this.pushModuleSelected);
 
       this.$emit("submit", data);
       // this.submit!(data);

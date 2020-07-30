@@ -31,6 +31,7 @@ export class ModuleEContainer extends ModuleE {
   }
 
   addChild(data: IItemStoreData) {
+    console.log("addChild", data);
     FirestoreMgr.itemsRef
       .add(data)
       .then((ref: firebase.firestore.DocumentReference) => {
