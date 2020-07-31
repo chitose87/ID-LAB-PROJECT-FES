@@ -13,6 +13,8 @@
     //  :pageData="pageData"
     //)
 
+    .bootstrap#bootstrap-container
+
 </template>
 
 <script lang="ts">

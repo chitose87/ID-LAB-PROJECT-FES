@@ -308,22 +308,23 @@
       }
     }
 
-    //.u_auto-input
-    .u_auto-input {
-      position: relative;
-      display: inline-block;
+  }
 
-      &__static {
-        visibility: hidden;
-        text-indent: 0.5em;
-      }
+  //.u_auto-input
+  .u_auto-input {
+    position: relative;
+    display: inline-block;
 
-      &__input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-      }
+    &__static {
+      visibility: hidden;
+      text-indent: 0.5em;
+    }
+
+    &__input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
     }
   }
 </style>

@@ -13,6 +13,7 @@
     .box(
       :id="itemData.tagId"
       :class="getClass(itemData)"
+      :style="getStyle(itemData)"
     )
       component(
         v-for="child in children"

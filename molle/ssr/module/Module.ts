@@ -34,6 +34,18 @@ export class Module extends Vue {
     return obj;
   }
 
+  getStyle(data: any) {
+    let obj: any = {};
+    for (let key in data.style) {
+      let value = data.style[key];
+      if (typeof value == "string") {
+        value = value.replace("gutter", "rem");
+      }
+      obj[key] = value;
+    }
+    return data.style;
+  }
+
   // getStyle(data: any, ...arg: any[]) {
   //   console.log(arg);
   //   let obj: any = {};
