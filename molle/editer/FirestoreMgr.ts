@@ -36,17 +36,17 @@ export class FirestoreMgr {
     data: any,
     opt?: any
   ) {
-    // console.log("itemUpdate", id, data)
+    console.log("itemUpdate", id)
     // console.trace()
     let batch = firebase.firestore().batch();
-    data.updateTime = firebase.firestore.FieldValue.serverTimestamp();
+    // data.updateTime = firebase.firestore.FieldValue.serverTimestamp();
     batch.update(FirestoreMgr.itemsRef.doc(id), data);
 
     //
     if (this.currentPageData) {
-      batch.update(this.currentPageData.ref, {
-        updateTime: firebase.firestore.FieldValue.serverTimestamp()
-      });
+      // batch.update(this.currentPageData.ref, {
+      //   updateTime: firebase.firestore.FieldValue.serverTimestamp()
+      // });
     }
     batch.commit().then((e) => {
       console.log(e);

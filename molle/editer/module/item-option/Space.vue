@@ -1,21 +1,26 @@
 <template lang="pug">
-  .item-option-input
+  .item-option-space
     label
-      span.mr-1 {{profile.label}}:
-      input.form-control.form-control-sm(type="text" :value="option[profile.id]" @change="update($event.target.value)")
+      SpaceFormComp(
+        :label="profile.label"
+        :value="option[profile.id]"
+        :negative="profile.negative"
+        @update="v=>update(v)"
+      )
 
 </template>
 
 <script lang="ts">
   import {Component, Prop, Vue} from "~/node_modules/nuxt-property-decorator";
+  import SpaceFormComp from "~/molle/editer/ui/SpaceFormComp.vue";
 
   @Component({
-    components: {}
+    components: {SpaceFormComp}
   })
   /**
    */
-  export default class ItemOptionInput extends Vue {
-    @Prop() profile?: ItemOptionInputProfile;
+  export default class ItemOptionSpace extends Vue {
+    @Prop() profile?: ItemOptionSpaceProfile;
     @Prop() option?: any;
 
     update(v: string) {
@@ -25,19 +30,22 @@
     }
   }
 
-  export class ItemOptionInputProfile {
-    name: string = "ItemOptionInput";
+  export class ItemOptionSpaceProfile {
+    name: string = "ItemOptionSpace";
 
     id: string;
     label: string;
     value: string = "";
+    negative: boolean;
 
     constructor(opt: {
       id: string,
-      label: string
+      label: string,
+      negative: boolean
     }) {
       this.id = opt.id;
       this.label = opt.label;
+      this.negative = !(opt.negative === false);
     }
   }
 </script>

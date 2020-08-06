@@ -1,13 +1,13 @@
 require('dotenv').config();
 
 const env = {
-  breakPoint: 768,
+  breakPoint: process.env.breakPoint,
+  gutter: process.env.gutter,
 };
 let envStr = "";
 for (let i in env) {
   envStr += `$${i}:${env[i]};`;
 }
-Object.assign(process.env, env);
 
 const firebase = require("firebase/app");
 require("firebase/auth");

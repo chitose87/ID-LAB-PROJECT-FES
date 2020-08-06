@@ -7,7 +7,7 @@
           input.u_auto-input__input.form-control.form-control-sm(
             v-model="valueNumber"
             type="number"
-            min="-5" max="5" step="0.25"
+            :min="negative !== false?-5:0" max="5" step="0.25"
             @input="update()")
         .u_auto-input.d-inline-block
           span.u_auto-input__static.form-control.form-control-sm.pr-4(v-html="valueSelectedLabel || ''")
@@ -27,6 +27,7 @@
   export default class SpaceFormComp extends Vue {
     @Prop() value?: string | number;
     @Prop() label?: string;
+    @Prop() negative?: boolean;
     valueData: string = "";
 
     valueNumber = 1;
@@ -36,16 +37,21 @@
       {value: "", label: "none"},
       {value: "0gutter", label: "0"},
       {value: "auto", label: "auto"},
-      {value: "1gutter", label: "gutter"},
-      {value: "0.25gutter", label: "gutter*0.25"},
-      {value: "0.5gutter", label: "gutter*0.5"},
-      {value: "0.75gutter", label: "gutter*0.75"},
       {value: "number", label: "rem"}
     ];
 
     created() {
-
       this.updateValue();
+      this.spaceItems.push({value: "1gutter", label: "gutter"});
+      this.spaceItems.push({value: "0.75gutter", label: "gutter*0.75"});
+      this.spaceItems.push({value: "0.5gutter", label: "gutter*0.5"});
+      this.spaceItems.push({value: "0.25gutter", label: "gutter*0.25"});
+      if (this.negative !== false) {
+        this.spaceItems.push({value: "-0.25gutter", label: "-gutter*0.25"});
+        this.spaceItems.push({value: "-0.5gutter", label: "-gutter*0.5"});
+        this.spaceItems.push({value: "-0.75gutter", label: "-gutter*0.75"});
+        this.spaceItems.push({value: "-1gutter", label: "-gutter"});
+      }
     }
 
     @Watch("value")

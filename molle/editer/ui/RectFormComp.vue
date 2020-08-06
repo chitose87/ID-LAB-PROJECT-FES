@@ -7,14 +7,17 @@
       :title="label" triggers="focus"
       placement="bottom"
       container="bootstrap-container")
-      div
-        SpaceFormComp(:label="'top'" :value="rect.top" @update="v=>updateLine('top',v)")
-        button.btn.btn-sm.btn-outline-secondary(@click="onSync()")
+      div.position-relative.text-center
+        button.btn.btn-sm.btn-outline-secondary(
+          @click="onSync()"
+          style="position:absolute;top:0;right:0;"
+        )
           b-icon(icon="link-45deg")
-        div
+        SpaceFormComp.text-left(:label="'top'" :value="rect.top" @update="v=>updateLine('top',v)")
+        div.text-left
           SpaceFormComp.w-50(:label="'left'" :value="rect.left" @update="v=>updateLine('left',v)")
           SpaceFormComp.w-50(:label="'right'" :value="rect.right" @update="v=>updateLine('right',v)")
-        SpaceFormComp(:label="'bottom'" :value="rect.bottom" @update="v=>updateLine('bottom',v)")
+        SpaceFormComp.text-left(:label="'bottom'" :value="rect.bottom" @update="v=>updateLine('bottom',v)")
 
 </template>
 

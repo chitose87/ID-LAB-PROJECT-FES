@@ -39,11 +39,18 @@ export class Module extends Vue {
     for (let key in data.style) {
       let value = data.style[key];
       if (typeof value == "string") {
-        value = value.replace("gutter", "rem");
+        value = this.getValue(value);
       }
       obj[key] = value;
     }
-    return data.style;
+    return obj;
+  }
+
+  getValue(v?: string) {
+    if (v && v.indexOf("gutter") > 0) {
+      return parseFloat(v) * parseFloat(process.env.gutter || "18") + "px";
+    }
+    return v;
   }
 
   // getStyle(data: any, ...arg: any[]) {

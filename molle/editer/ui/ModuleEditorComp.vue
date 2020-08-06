@@ -57,9 +57,10 @@
       div.mb-1.form-inline
         component.mr-3(v-for="item in itemOption"
           :is="item.name"
-          :key="item.name"
+          :key="item.id"
           :profile="item"
-          :itemData="itemData"
+          :option="data.option||{}"
+          @update="v=>update2('option',v)"
         )
 
       StyleComp.mb-1(:itemData="itemData" :styleProfile="styleProfile")

@@ -12,6 +12,7 @@ import ItemOptionInput from "~/molle/editer/module/item-option/Input.vue";
 import ColumnBoxE from "~/molle/editer/module/ColumnBoxE.vue";
 import CardE from "~/molle/editer/module/CardE.vue";
 import PictureE from "~/molle/editer/module/PictureE.vue";
+import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
 
 export const molleEditerModules = {
   BoxE: BoxE,
@@ -49,6 +50,7 @@ export function setMolleEditerModules() {
   Vue.component("ItemOptionSelect", ItemOptionSelect);
   Vue.component("ItemOptionButton", ItemOptionButton);
   Vue.component("ItemOptionInput", ItemOptionInput);
+  Vue.component("ItemOptionSpace", ItemOptionSpace);
 
   //modules
   for (let key in molleEditerModules) {

@@ -49,6 +49,7 @@ export class ModuleE extends Module {
 
     this.unsubscribes.push(
       FirestoreMgr.itemsRef.doc(this.itemId).onSnapshot((snap: firebase.firestore.DocumentSnapshot) => {
+        // console.log("update", this.itemId)
         if (!this.$el.parentNode) {
           this.destroyed();
           return;

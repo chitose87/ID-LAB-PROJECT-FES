@@ -68,7 +68,7 @@
     }
 
     getStyle() {
-      let obj: any = {};
+      let obj = super.getStyle(this.itemData);
       let selfOpt = this.itemData.option || {};
       let parentOpt;
       try {
@@ -80,6 +80,17 @@
       let attrs = ["flex-basis"];
       for (let attr of attrs) {
         obj[attr] = selfOpt[attr] || parentOpt[attr];
+      }
+      //gutter
+      let gutterH = this.getValue(parentOpt["gutter-h"]);
+      if (gutterH) {
+        obj["padding-left"] || (obj["padding-left"] = gutterH);
+        obj["padding-right"] || (obj["padding-right"] = gutterH);
+      }
+      let gutterV = this.getValue(parentOpt["gutter-v"]);
+      if (gutterV) {
+        obj["padding-top"] || (obj["padding-top"] = gutterV);
+        obj["padding-bottom"] || (obj["padding-bottom"] = gutterV);
       }
       return obj;
     }

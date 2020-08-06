@@ -2,16 +2,13 @@
   .item-option-select
     label
       span.mr-1 {{profile.label}}:
-      select.form-control.form-control-sm(:value="itemData.option[profile.id]" @change="update($event.target.value)")
+      select.form-control.form-control-sm(:value="option[profile.id]" @change="update($event.target.value)")
         option(v-for="item in profile.select" :value="item" v-html="item")
 
 </template>
 
 <script lang="ts">
   import {Component, Prop, Vue} from "~/node_modules/nuxt-property-decorator";
-  import {IItemStoreData} from "~/molle/interface/ItemProfile";
-  import * as firebase from "~/node_modules/firebase";
-  import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
 
   @Component({
     components: {}
@@ -20,16 +17,12 @@
    */
   export default class ItemOptionSelect extends Vue {
     @Prop() profile?: ItemOptionSelectProfile;
-    @Prop() itemData?: IItemStoreData;
-
-    created() {
-      if (!this.itemData!.option) this.itemData!.option = {};
-    }
+    @Prop() option?: any;
 
     update(v: string) {
-      let update: any = {option: {}};
-      update.option[this.profile!.id] = v;
-      FirestoreMgr.itemUpdate(this.itemData!.id, update);
+      let update: any = Object.assign({}, this.option);
+      update[this.profile!.id] = v;
+      this.$emit("update", update);
     }
   }
 
