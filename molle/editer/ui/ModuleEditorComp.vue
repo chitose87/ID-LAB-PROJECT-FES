@@ -11,7 +11,7 @@
       @click="lsStore.updateEditing({id:itemData.id})"
     ) X
     div.module-editor__body(v-if="$parent.isEditing()")
-      b-icon.module-editor__arrow(icon="square-fill")
+      //b-icon.module-editor__arrow(icon="square-fill")
 
       button.btn.module-editor__notExport(
         v-if="!$parent.required"
@@ -214,13 +214,13 @@
     &:before {
       content: "";
       position: absolute;
-      top: -0.5rem;
-      left: -0.5rem;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       border: 0.5rem solid $color-orange;
       border-radius: 0.5rem;
-      box-sizing: content-box;
+      /*box-sizing: content-box;*/
       pointer-events: none;
     }
 
@@ -253,17 +253,13 @@
     }
 
     &[status=show] {
-      /*position: relative;*/
-      //top: 100%;
-      //z-index: $zindex-fixed;
-      margin-bottom: 0.5rem;
-      margin-left: -1rem;
-      margin-right: -1rem;
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
 
       .toggle {
         position: absolute;
-        top: -0.5rem;
-        right: -0.5rem;
+        top: 0;
+        right: 0;
         z-index: 1;
       }
 
@@ -279,14 +275,14 @@
       position: relative;
     }
 
-    &__arrow {
-      color: var(--orange);
-      position: absolute;
-      bottom: -0.5em;
-      left: 2rem;
-      transform: rotate(45deg);
-      font-size: 11px;
-    }
+    //&__arrow {
+    //  color: var(--orange);
+    //  position: absolute;
+    //  bottom: -0.5em;
+    //  left: 2rem;
+    //  transform: rotate(45deg);
+    //  font-size: 11px;
+    //}
 
     &__notExport {
       position: absolute;

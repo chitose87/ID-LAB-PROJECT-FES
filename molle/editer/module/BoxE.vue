@@ -10,7 +10,9 @@
       :styleProfile="styleProfile"
     )
 
-    .box(
+    //.box(
+    component(
+      :is="itemData.option.tag || 'div'"
       :id="itemData.tagId"
       :class="getClass(itemData)"
       :style="getStyle(itemData)"
@@ -38,6 +40,7 @@
   import {ModuleEContainer} from "~/molle/editer/module/ModuleEContainer";
   import {InitialValue} from "~/molle/editer/module/index";
   import AddModule from "~/molle/editer/ui/AddModule.vue";
+  import {ItemOptionSelectProfile} from "~/molle/editer/module/item-option/Select.vue";
 
   @Component({
     components: {AddModule, ModuleEditorComp, StyleComp}
@@ -47,6 +50,11 @@
       // new ItemOptionAddModuleProfile({
       //   added: this.onAddModule
       // })
+      new ItemOptionSelectProfile({
+        id: "tag",
+        label: "タグ",
+        select: ["", "section"]
+      })
     ];
     //value setting
     valueProfile: ValueProfile = new ValueProfile({
@@ -55,7 +63,7 @@
 
     //style setting
     styleProfile: StyleProfile = new StyleProfile({
-      container: true,
+      container: false,
       border: false,
       margin: "",
       padding: "",
