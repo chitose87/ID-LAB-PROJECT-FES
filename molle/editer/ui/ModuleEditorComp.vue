@@ -48,10 +48,16 @@
         span.mr-1.text-white(v-html="itemData.id")
 
         //削除
-        button.btn.btn-sm.btn-danger.mr-3(
+        button.btn.btn-sm.btn-danger.mr-2(
           v-if="!$parent.notDeleted"
           @click="$parent.deleteModule()"
-        ) 削除
+        ) Delete
+
+        //移動
+        MoveComp.mr-2(
+          v-if="!$parent.notMove"
+          :itemData="itemData"
+        )
 
         // todo visible 設定を足す
       div.mb-1.form-inline
@@ -117,9 +123,10 @@
   import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
   import {lsStore} from "~/utils/store-accessor";
   import {Singleton} from "~/molle/Singleton";
+  import MoveComp from "~/molle/editer/ui/MoveComp.vue";
 
   @Component({
-    components: {StyleComp}
+    components: {MoveComp, StyleComp}
   })
   /**
    */
@@ -205,6 +212,10 @@
         update[key] = this.data[key];
       }
       FirestoreMgr.itemUpdate(this.itemData!.id, update);
+    }
+
+    moveModule() {
+      console.log("moveModule", this.data)
     }
   }
 </script>
