@@ -29,6 +29,10 @@
             :itemId="getMemberItemId('description')"
             :notDeleted="true"
           )
+          ParagraphE.list-card-item__body__tag(
+            :itemId="getMemberItemId('hashtag')"
+            :notDeleted="true"
+          )
 
 </template>
 
