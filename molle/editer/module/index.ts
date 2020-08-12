@@ -15,7 +15,6 @@ import PictureE from "~/molle/editer/module/PictureE.vue";
 import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
 import ListCardItemE from "~/molle/editer/module/ListCardItemE.vue";
 import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
-import ButtonE from "~/molle/editer/module/ButtonE.vue";
 
 export const molleEditerModules = {
   BoxE: BoxE,
