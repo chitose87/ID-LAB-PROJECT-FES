@@ -14,9 +14,9 @@
     )
 
       div
+        p new
         .list
           .left
-            h1 new
             PictureE(
               :itemId="getMemberItemId('img')"
               :notDeleted="true"
@@ -24,11 +24,10 @@
             )
 
           .right
-            HeadlineE(
-              :itemId="getMemberItemId('title')"
+            ParagraphE(
+              :itemId="getMemberItemId('description')"
               :notDeleted="true"
             )
-
             ParagraphE(
               :itemId="getMemberItemId('description')"
               :notDeleted="true"

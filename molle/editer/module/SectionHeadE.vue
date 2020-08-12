@@ -13,9 +13,13 @@
       :class="getClass(itemData)"
     )
 
-      div
+      div.title
         HeadlineE(
           :itemId="getMemberItemId('title')"
+          :notDeleted="true"
+        )
+        ParagraphE(
+          :itemId="getMemberItemId('description')"
           :notDeleted="true"
         )
 
@@ -59,7 +63,7 @@
   .card {
     box-shadow: $shadow;
   }
-  div{
+  .title{
     text-align: center;
   }
 </style>
