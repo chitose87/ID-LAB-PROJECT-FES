@@ -12,26 +12,23 @@
       :id="itemData.tagId"
       :class="getClass(itemData)"
     )
-
-      div
-        p new
-        .list
-          .left
-            PictureE(
-              :itemId="getMemberItemId('img')"
-              :notDeleted="true"
-              :required="true"
-            )
-
-          .right
-            ParagraphE(
-              :itemId="getMemberItemId('description')"
-              :notDeleted="true"
-            )
-            ParagraphE(
-              :itemId="getMemberItemId('description')"
-              :notDeleted="true"
-            )
+      p new
+      .list-card-item__body
+        .list-card-item__body__left
+          PictureE.list-card-item__body__img(
+            :itemId="getMemberItemId('img')"
+            :notDeleted="true"
+            :required="true"
+          )
+        .list-card-item__body__right
+          ParagraphE.list-card-item__body__date(
+            :itemId="getMemberItemId('date')"
+            :notDeleted="true"
+          )
+          ParagraphE.list-card-item__body__p(
+            :itemId="getMemberItemId('description')"
+            :notDeleted="true"
+          )
 
 </template>
 
@@ -70,10 +67,12 @@
 </script>
 
 <style lang="scss">
-  .card {
-    box-shadow: $shadow;
-  }
-  .list{
-    display: flex;
+  .list-card-item {
+    .card {
+      box-shadow: $shadow;
+    }
+    &__body {
+      display: flex;
+    }
   }
 </style>

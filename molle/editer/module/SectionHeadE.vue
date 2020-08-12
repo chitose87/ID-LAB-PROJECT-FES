@@ -8,17 +8,16 @@
       :valueProfile="valueProfile"
       :styleProfile="styleProfile")
 
-    .card(
+    .section-head(
       :id="itemData.tagId"
       :class="getClass(itemData)"
     )
-
-      div.title
-        HeadlineE(
+      .section-head__body
+        HeadlineE.section-head__body__title(
           :itemId="getMemberItemId('title')"
           :notDeleted="true"
         )
-        ParagraphE(
+        ParagraphE.section-head__body__p(
           :itemId="getMemberItemId('description')"
           :notDeleted="true"
         )
@@ -60,10 +59,12 @@
 </script>
 
 <style lang="scss">
-  .card {
-    box-shadow: $shadow;
-  }
-  .title{
-    text-align: center;
+  .section-head {
+    .card {
+      box-shadow: $shadow;
+    }
+    &__body {
+      text-align: center;
+    }
   }
 </style>
