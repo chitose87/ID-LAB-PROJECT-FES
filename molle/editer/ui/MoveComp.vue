@@ -15,10 +15,13 @@
         type="text"
         v-model="toId"
         :list="`move-comp--datalist`+itemData.id"
-        @focus="hoge()"
+        @focus="update()"
       )
       datalist(:id="`move-comp--datalist`+itemData.id")
-        //option()
+        option(
+          v-for="item in list"
+          v-html="item.itemId"
+        )
 
       button.btn.btn-primary.btn-sm(type="submit" @click="submit()") 移動
 
@@ -28,6 +31,10 @@
   import {Component, Prop, Vue} from "~/node_modules/nuxt-property-decorator";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
   import {ModuleEContainer} from "~/molle/editer/module/ModuleEContainer";
+  import EditView from "~/molle/ui/EditView.vue";
+  import {ModuleE} from "~/molle/editer/module/ModuleE";
+  import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
+  import {ValueType} from "~/molle/interface/ValueProfile";
 
   @Component({
     components: {}
@@ -38,31 +45,77 @@
     @Prop() itemData?: IItemStoreData;
 
     toId: string = "";
+    list = <ModuleEContainer[]>[];
+    selfModule?: ModuleE;
+    parentContainer?: ModuleEContainer;
 
-    hoge(){
-      console.log("MoveComp")
-      console.log(this.itemData!.id, this.itemData!.type);
-      this.hogeA(this);
+    update() {
+      // console.log("MoveComp")
+      // console.log(this.itemData!.id, this.itemData!.type);
+      delete this.parentContainer;
+      this.list.length = 0;
+
+      this.upstream(this);
     }
 
-    private hogeA(target: any) {
+    /**
+     *
+     * @param target
+     */
+    private upstream(target: any) {
       let parent = target.$parent;
-      console.log(parent instanceof ModuleEContainer);
-      if(parent instanceof ModuleEContainer){
-        console.log(parent)
+
+      if (!this.selfModule && parent instanceof ModuleE) {
+        this.selfModule = parent;
+      } else if (!this.parentContainer && parent instanceof ModuleEContainer) {
+        this.parentContainer = parent;
       }
 
-      if (parent) {
-        this.hogeA(parent);
-      } else {
+      if (parent instanceof EditView) {
+        this.downstream(parent);
+      } else if (parent) {
+        this.upstream(parent);
+      }
+    }
 
+    /**
+     *
+     * @param target
+     */
+    private downstream(target: Vue) {
+      for (let child of target.$children) {
+        if (child instanceof ModuleEContainer) {
+          if (child == this.selfModule) {
+            continue;
+          } else if (child != this.parentContainer) {
+            this.list.push(child);
+          }
+        }
+        this.downstream(child);
       }
     }
 
     submit() {
+      FirestoreMgr.itemsRef.doc(this.toId).get()
+        .then((snap: firebase.firestore.DocumentSnapshot) => {
+          if (!snap.exists) {
+            return;
+          }
 
+          let data = <IItemStoreData>snap.data();
+          if (data.type != ValueType.children.val) {
+            return;
+          }
+          //copy
+          let value = data.value || [];
+          value.push(this.itemData!.id);
+
+          FirestoreMgr.itemUpdate(this.toId, {value: value});
+
+          //delete
+          this.parentContainer!.deleteChild(this.itemData!.id)
+        });
     }
-
   }
 </script>
 
