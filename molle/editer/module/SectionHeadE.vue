@@ -17,10 +17,6 @@
           :itemId="getMemberItemId('title')"
           :notDeleted="true"
         )
-        ParagraphE.section-head__body__p(
-          :itemId="getMemberItemId('description')"
-          :notDeleted="true"
-        )
 
 </template>
 
