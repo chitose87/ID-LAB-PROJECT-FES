@@ -31,6 +31,7 @@ export const ValueType = {
   // paragraph: {label: "複数行", val: "paragraph"},
   number: {label: "数字", val: "number"},
   img: {label: "画像", val: "img"},
+  link: {label: "リンク", val: "href"},
   html: {label: "HTML", val: "html"},
   picture: {label: "画像", val: "picture"},
   children: {label: "ID List", val: "children"},
