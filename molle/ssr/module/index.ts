@@ -7,13 +7,14 @@ import Card from "~/molle/ssr/module/Card.vue";
 import Picture from "~/molle/ssr/module/Picture.vue";
 import ListCardItem from "~/molle/ssr/module/ListCardItem.vue";
 import SectionHead from "~/molle/ssr/module/SectionHead.vue";
-import Button from "~/molle/ssr/module/Button.vue";
+import Buttons from "~/molle/ssr/module/Buttons.vue";
 
 export const molleModules = {
   Box: Box,
   Column: Column,
   Headline: Headline,
   Paragraph: Paragraph,
+  Buttons: Buttons,
   Picture: Picture,
 
   Card: Card,
