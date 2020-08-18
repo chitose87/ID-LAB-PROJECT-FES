@@ -8,6 +8,9 @@ import Picture from "~/molle/ssr/module/Picture.vue";
 import ListCardItem from "~/molle/ssr/module/ListCardItem.vue";
 import SectionHead from "~/molle/ssr/module/SectionHead.vue";
 import Buttons from "~/molle/ssr/module/Buttons.vue";
+import GrobalHeader from "~/molle/ssr/module/GrobalHeader.vue";
+import GrobalFooter from "~/molle/ssr/module/GrobalFooter.vue";
+import SectionMv from "~/molle/ssr/module/SectionMv.vue";
 
 export const molleModules = {
   Box: Box,
@@ -20,6 +23,9 @@ export const molleModules = {
   Card: Card,
   ListCardItem: ListCardItem,
   SectionHead: SectionHead,
+  GrobalHeader: GrobalHeader,
+  GrobalFooter: GrobalFooter,
+  SectionMv: SectionMv,
 };
 
 export function setMolleModules() {

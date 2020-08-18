@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="71" viewBox="0 0 31 71">
+  <g id="グループ_232" data-name="グループ 232" transform="translate(-893 -8623)">
+    <path id="sticky-note-regular" d="M0,41.126V59.678A3.321,3.321,0,0,0,3.321,63H27.679A3.321,3.321,0,0,0,31,59.678V35.321A3.321,3.321,0,0,0,27.679,32H9.126a3.321,3.321,0,0,0-2.349.973l-5.8,5.8A3.321,3.321,0,0,0,0,41.126ZM8.857,35.59v5.267H3.59ZM3.321,59.678v-15.5h7.2a1.661,1.661,0,0,0,1.661-1.661v-7.2h15.5V59.678Z" transform="translate(893 8591)" fill="#fcf8f3"/>
+    <text id="note" transform="translate(908 8691)" fill="#fcf8f3" font-size="14" font-family="Helvetica"><tspan x="-13.624" y="0">note</tspan></text>
+  </g>
+</svg>

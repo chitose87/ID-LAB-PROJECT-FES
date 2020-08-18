@@ -16,6 +16,9 @@ import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
 import ListCardItemE from "~/molle/editer/module/ListCardItemE.vue";
 import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
+import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
+import GrobalFooterE from "~/molle/editer/module/GrobalFooterE.vue";
+import SectionMvE from "~/molle/editer/module/SectionMvE.vue";
 
 export const molleEditerModules = {
   BoxE: BoxE,
@@ -29,6 +32,9 @@ export const molleEditerModules = {
   CardE: CardE,
   ListCardItemE: ListCardItemE,
   SectionHeadE: SectionHeadE,
+  GrobalHeaderE: GrobalHeaderE,
+  GrobalFooterE: GrobalFooterE,
+  SectionMvE: SectionMvE,
 };
 
 export const InitialValue = {
