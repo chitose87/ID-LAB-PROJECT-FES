@@ -7,7 +7,7 @@ import Card from "~/molle/ssr/module/Card.vue";
 import Picture from "~/molle/ssr/module/Picture.vue";
 import ListCardItem from "~/molle/ssr/module/ListCardItem.vue";
 import SectionHead from "~/molle/ssr/module/SectionHead.vue";
-import Buttons from "~/molle/ssr/module/Buttons.vue";
+// import Buttons from "~/molle/ssr/module/Buttons.vue";
 import GrobalHeader from "~/molle/ssr/module/GrobalHeader.vue";
 import GrobalFooter from "~/molle/ssr/module/GrobalFooter.vue";
 import SectionMv from "~/molle/ssr/module/SectionMv.vue";
@@ -17,7 +17,7 @@ export const molleModules = {
   Column: Column,
   Headline: Headline,
   Paragraph: Paragraph,
-  Buttons: Buttons,
+  // Buttons: Buttons,
   Picture: Picture,
 
   Card: Card,

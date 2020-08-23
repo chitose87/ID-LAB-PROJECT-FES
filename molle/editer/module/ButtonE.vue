@@ -42,9 +42,9 @@
       // color: {default: "", select: ["", "dark"]},
     });
 
-    created() {
-      this.init(InitialValue.Button);
-    }
+    // created() {
+      // this.init(InitialValue.Button);
+    // }
 
     //Unique Methods
   }

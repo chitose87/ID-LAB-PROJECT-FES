@@ -15,7 +15,7 @@ import PictureE from "~/molle/editer/module/PictureE.vue";
 import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
 import ListCardItemE from "~/molle/editer/module/ListCardItemE.vue";
 import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
-import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
+// import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
 import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
 import GrobalFooterE from "~/molle/editer/module/GrobalFooterE.vue";
 import SectionMvE from "~/molle/editer/module/SectionMvE.vue";
@@ -27,7 +27,7 @@ export const molleEditerModules = {
   HeadlineE: HeadlineE,
   ParagraphE: ParagraphE,
   PictureE: PictureE,
-  ButtonsE: ButtonsE,
+  // ButtonsE: ButtonsE,
 
   CardE: CardE,
   ListCardItemE: ListCardItemE,
