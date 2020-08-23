@@ -13,7 +13,7 @@
   @Component({
     components: {}
   })
-  export default class Buttons extends Module {
+  export default class Button extends Module {
   }
 </script>
 

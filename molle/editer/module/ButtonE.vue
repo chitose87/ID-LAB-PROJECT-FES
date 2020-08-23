@@ -8,9 +8,11 @@
       :valueProfile="valueProfile"
       :styleProfile="styleProfile")
 
-    .buttons
-      a.button(href="#")
-        span BUTTON
+    a.btn(
+      :href="itemData.value.href"
+      :target="itemData.value.target"
+    )
+      span(v-html="itemData.value.label")
 
 </template>
 
@@ -22,15 +24,11 @@
   import {ModuleE} from "~/molle/editer/module/ModuleE";
   import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
   import {InitialValue} from "~/molle/editer/module/index";
-  import {lsStore} from "~/utils/store-accessor";
-  import {Singleton} from "~/molle/Singleton";
 
   @Component({
     components: {ModuleEditorComp, StyleComp}
   })
-  export default class ButtonsE extends ModuleE {
-    lsStore = lsStore;
-
+  export default class ButtonE extends ModuleE {
     //value setting
     valueProfile: ValueProfile = new ValueProfile({
       types: [ValueType.link]
@@ -39,13 +37,13 @@
     //style setting
     styleProfile: StyleProfile = new StyleProfile({
       border: false,
-      align: StyleAlign.None,
-      theme: {default: "", select: ["", "test"]},
-      color: {default: "", select: ["", "dark"]},
+      // align: StyleAlign.None,
+      // theme: {default: "", select: ["", "test"]},
+      // color: {default: "", select: ["", "dark"]},
     });
 
     created() {
-      this.init(InitialValue.Buttons);
+      this.init(InitialValue.Button);
     }
 
     //Unique Methods

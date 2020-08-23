@@ -15,16 +15,18 @@ import PictureE from "~/molle/editer/module/PictureE.vue";
 import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
 import ListCardItemE from "~/molle/editer/module/ListCardItemE.vue";
 import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
-import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
+import LinkBoxE from "~/molle/editer/module/LinkBoxE.vue";
+import ButtonE from "./ButtonE.vue";
 
 export const molleEditerModules = {
   BoxE: BoxE,
   ColumnE: ColumnE,
   ColumnBoxE: ColumnBoxE,
+  LinkBoxE: LinkBoxE,
   HeadlineE: HeadlineE,
   ParagraphE: ParagraphE,
   PictureE: PictureE,
-  ButtonsE: ButtonsE,
+  ButtonE: ButtonE,
 
   CardE: CardE,
   ListCardItemE: ListCardItemE,
@@ -36,6 +38,7 @@ export const InitialValue = {
 
   Column: c("Column", "children"),
   ColumnBox: c("Box", "children"),
+  LinkBox: c("Box", "children"),
 
   Headline: c("Headline", "text", {
     option: {
@@ -43,7 +46,7 @@ export const InitialValue = {
     }
   }),
   Paragraph: c("Paragraph", "text"),
-  Buttons: c("Buttons", "buttons"),
+  Button: c("Button", "link"),
   Picture: c("Picture", "picture"),
 
   Group: (moduleId: string) => c(moduleId, "group"),
@@ -96,10 +99,11 @@ function c(moduleId: string, type: string, opt?: any) {
     case "text":
       v.value = "Lorem ipsum...";
       break;
-    case "button":
+    case "link":
       v.value = {
         href: "https://placehold.jp/",
-        label: "BUTTON",
+        target: "_blank",
+        label: "Link",
       };
       break;
   }
