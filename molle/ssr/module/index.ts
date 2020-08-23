@@ -7,21 +7,25 @@ import Card from "~/molle/ssr/module/Card.vue";
 import Picture from "~/molle/ssr/module/Picture.vue";
 import ListCardItem from "~/molle/ssr/module/ListCardItem.vue";
 import SectionHead from "~/molle/ssr/module/SectionHead.vue";
-import Button from "~/molle/ssr/module/Button.vue";
-import LinkBox from "~/molle/ssr/module/LinkBox.vue";
+import Buttons from "~/molle/ssr/module/Buttons.vue";
+import GrobalHeader from "~/molle/ssr/module/GrobalHeader.vue";
+import GrobalFooter from "~/molle/ssr/module/GrobalFooter.vue";
+import SectionMv from "~/molle/ssr/module/SectionMv.vue";
 
 export const molleModules = {
   Box: Box,
   Column: Column,
   Headline: Headline,
   Paragraph: Paragraph,
-  Button: Button,
-  LinkBox: LinkBox,
+  Buttons: Buttons,
   Picture: Picture,
 
   Card: Card,
   ListCardItem: ListCardItem,
   SectionHead: SectionHead,
+  GrobalHeader: GrobalHeader,
+  GrobalFooter: GrobalFooter,
+  SectionMv: SectionMv,
 };
 
 export function setMolleModules() {

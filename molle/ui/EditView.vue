@@ -100,8 +100,8 @@
     position: relative;
     min-height: 1rem;
 
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    //margin-top: 3rem;
+    //margin-bottom: 3rem;
 
     &.editing {
       padding-top: 0.5rem;
