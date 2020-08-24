@@ -2,24 +2,28 @@
 
 > My pioneering Nuxt.js project
 
-## Build Setup
+## セットアップ
 
 ```bash
-# install dependencies
-$ npm install
+$ npm i
 
-* Node.js version 10.x?
-
-# serve with hot reload at localhost:3000
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run gen
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## メモ
 
+molleシステムは再開発
+
+一旦ページ.vueに直接書くスタイルですすめる。
+
+### トップページ
+
+pages/index.vue
+
+### アバウトページ
+
+pages/about.vue
+
+### スタイルモジュール
+
+assets/scss/modules　以下
