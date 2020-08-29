@@ -1,8 +1,8 @@
 <template lang="pug">
   header.global-header
-    .global-header__body.container
+    .global-header__body
       .global-header__logo
-        img(src="/imgs/logo.svg" alt="logo")
+        img(src="/imgs/head-logo.svg" alt="logo")
       .global-header__menu
         a.global-header__menu__item(href="#")
           span About us
@@ -30,19 +30,20 @@
     position: fixed;
     left: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
+    background: #FCF8F3;
+    opacity: 0.84;
 
     &__body {
       display: flex;
-      margin-top: 1.25rem;
-      margin-bottom: 1.25rem;
       align-items: center;
       justify-content: start;
+      height: 50px;
     }
 
     &__logo {
-      margin-left: 3%;
-      margin-right: 11%;
+      flex-basis: 47%;
+      margin-left: 2rem;
 
       img {
         height: auto;
@@ -54,7 +55,7 @@
     &__menu {
       display: flex;
 
-      &__item {
+      .global-header__menu__item {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         padding-left: 1rem;
@@ -63,22 +64,28 @@
         z-index: 1;
         text-align: center;
         margin: 1rem;
-
-        &:after {
+        align-items: center;
+        display: inline-block;
+        color: #867C84;
+        &:before {
           content: "";
           display: block;
           position: absolute;
-          top: 0px;
-          left: 0px;
-          width: 100%;
           height: 100%;
-          transform: skew(-20deg);
-          z-index: -1;
-          background-color: #B48362;
+          width: 100%;
+          z-index: -2;
+          top: 0;
+          left: 0;
+          transform: skew(-20deg)
         }
-
+        &:hover {
+          color: #FCF8F3;
+          &:before {
+            background: #867C84;
+          }
+        }
         span {
-
+          font-size: 18px;
         }
       }
     }
