@@ -1,24 +1,24 @@
 <template lang="pug">
   footer.global-footer
-    .global-footer__body.container
+    .global-footer__body
       .global-footer__pb
         p
           | Powered by
-          br
+        p
           | ID Lab
       .global-footer__links
         a.global-footer__links__item(href="#")
           img(src="/imgs/id.lab.svg" alt="id")
-          span ID lab
+          //span ID lab
         a.global-footer__links__item(href="#")
           img(src="/imgs/note.svg" alt="note")
-          span note
+          //span note
         a.global-footer__links__item(href="#")
           img(src="/imgs/twitter.svg" alt="twitter")
-          span Twitter
+          //span Twitter
         a.global-footer__links__item(href="#")
           img(src="/imgs/insta.svg" alt="instagram")
-          span instagram
+          //span instagram
     .global-footer__copyright
       small ©️ ID Lab
 
@@ -38,7 +38,7 @@
   .global-footer {
     &__body {
       text-align: center;
-      background-color: #B48362;
+      background-color: #8CBCBF;
       padding-top: 4.5rem;
       padding-bottom: 4.5rem;
     }
@@ -48,6 +48,7 @@
 
       p {
         color: white;
+        margin-bottom: 1rem;
       }
     }
 
@@ -56,11 +57,12 @@
       justify-content: center;
 
       &__item {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+        margin-left: 2.25rem;
+        margin-right: 2.25rem;
         img {
-          margin-left: 3%;
-          margin-right: 3%;
-          width: auto;
-          height: 70px;
+
         }
 
         span {
@@ -70,7 +72,7 @@
     }
 
     &__copyright {
-      background-color: #00DDDD;
+      background-color: #B48362;
       text-align: center;
     }
   }
