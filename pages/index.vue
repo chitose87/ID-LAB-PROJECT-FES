@@ -23,6 +23,7 @@
 
     section.section_reports
       .container
+        NewReports
         .reports
           p.text-center
             | a
@@ -87,10 +88,11 @@
 
 <script lang="ts">
   import {Component, Vue} from "~/node_modules/nuxt-property-decorator";
+  import NewReports from "~/components/NewReports.vue";
 
   @Component({
     layout: "static",
-    components: {}
+    components: {NewReports}
   })
   export default class TopPage extends Vue {
 

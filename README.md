@@ -27,3 +27,11 @@ pages/about.vue
 ### スタイルモジュール
 
 assets/scss/modules　以下
+
+### functions
+
+fucntionだけ
+firebase deploy --only functions
+
+ローカルでテスト実行
+firebase emulators:start --only functions
