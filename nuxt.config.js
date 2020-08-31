@@ -111,7 +111,7 @@ export default {
   },
   generate: {
     // subFolders: false,
-    routes() {
+    __routes() {
       return new Promise((resolve, reject) => {
         firebase.auth().onAuthStateChanged((user) => {
 
