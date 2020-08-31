@@ -37,12 +37,11 @@
     &__body {
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: space-between;
       height: 50px;
     }
 
     &__logo {
-      flex-basis: 47%;
       margin-left: 2rem;
 
       img {
@@ -54,8 +53,11 @@
     //menu
     &__menu {
       display: flex;
+      justify-content: start;
 
-      .global-header__menu__item {
+      &__item {
+        text-decoration: none;
+        align-items: center;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         padding-left: 1rem;
@@ -64,7 +66,6 @@
         z-index: 1;
         text-align: center;
         margin: 1rem;
-        align-items: center;
         display: inline-block;
         color: #867C84;
         &:before {
@@ -85,7 +86,8 @@
           }
         }
         span {
-          font-size: 18px;
+          font-size: 1vw;
+
         }
       }
     }

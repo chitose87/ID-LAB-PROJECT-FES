@@ -1,28 +1,28 @@
 <template lang="pug">
   .about-page
-    section.section-about-head
-      .section-about-head__bg
-        .section-about-head__catch
+    section.section-mv
+      .section-mv__bg
+        .section-mv__catch
           picture
             img(src="/imgs/about-mv.svg")
-      .section-about-head__body
+      .section-mv__body
         .container
           h1 About Us
 
-    section.section_about-intro
-      .section_about-intro__text
-        p.title
+    section.section-intro
+      .section-intro__text
+        h3.title
           | PROJECT FESについて
         p.text
           | PROJECT FES では、昭和女子大学学生主催のプロジェクトのプレゼンの場をオンラインで開設します。
         p.text
           | ジャンルやテーマは問わず、参加してくれた学生主催プロジェクトの認知を大学内外へ広げるため、情報を発信していきます。
-      .section_about-intro__img
+      .section-intro__img
         img(src="/imgs/intro-img.svg")
 
-    section.section-about-detail
-      .section-about-detail__text
-        p.title
+    section.section-detail
+      .section-detail__text
+        h3.title
           | フェス？お祭りなの？
         p.text
           | 出展プロジェクトのプレゼンの場という目的を第一に、PR期間を経たのち、
@@ -30,14 +30,14 @@
           | 選考を通して選ばれたプロジェクト団体に対する賞の授与を予定しています。
         P
           | アワード形式の催し物」と捉えてもらえるとわかりやすいと思います。
-      .section-about-detail__img
+      .section-detail__img
 
-    section.section_about-member.section
+    section.section-member.section
       .container
         .skew-box.skew-box--left.skew-box--blue
-          .section_about-member__head
-            h1 私たち運営は各プロジェクトの広報として動きます。
-          .section_about-member__body
+          .section-member__head
+            h3 私たち運営は各プロジェクトの広報として動きます。
+          .section-member__body
             p
               | PROJECT FESは、ID Lab主催のプロジェクトです。
             P
@@ -49,17 +49,17 @@
           a.button.button-left(href="#")
             span 運営メンバーの紹介ページはこちら
 
-    section.section-about-symposium.section
+    section.section-symposium.section
       .container
         .skew-box.skew-box--right
-          .section-about-symposium__head
-            h1 PROJECT FES 座談会
-          .section-about-symposium__body
+          .section-symposium__head
+            h3 PROJECT FES 座談会
+          .section-symposium__body
             p
               | 参加団体に向けて、月一回の座談会を開催します。
             p
               | PR活動の悩みや活動記録を共有し、運営メンバーも交えてみんなで考えていきましょう。
-          a.button.button-left(href="#")
+          a.button.button-right(href="#")
             span 座談会の詳細ページはこちら
 
 
@@ -82,90 +82,156 @@
 
 <style lang="scss">
   .about-page {
-    .section{
+    .section {
       padding-top: 4.5rem;
       padding-bottom: 4.5rem;
       background: #E8E8E8;
     }
-  }
 
-  .section-about-head{
-    height: 20vh;
-    &__bg{
-      position: sticky;
-      top: 0;
-      height: 0;
-      z-index: -1;
+    .section-mv {
+      height: 20vh;
+
+      &__bg {
+        position: sticky;
+        top: 0;
+        height: 0;
+        z-index: -1;
+      }
+
+      &__body {
+        z-index: 1;
+        top: 0;
+        display: block;
+        text-align: center;
+
+        h1 {
+          margin-top: 5rem;
+          margin-bottom: 4.5rem;
+        }
+      }
     }
-    &__body {
-      z-index: 1;
-      top: 0;
-      display: block;
+
+    .section-intro {
       text-align: center;
-      h1{
-        margin-top: 5rem;
-        margin-bottom: 4.5rem;
-      }
-    }
-  }
+      background: #E8E8E8;
+      padding-top: 5rem;
 
-  .section_about-intro{
-    text-align: center;
-    background: #E8E8E8;
-    padding-top: 5rem;
-    .section_about-intro__text{
-      margin-bottom: 3.5rem;
-      .title{
-        margin-bottom: 4.25rem;
-      }
-      .text{
-        margin-bottom: 3rem;
-      }
-    }
-    .section_about-intro__img{
-      margin-left: 17.25rem;
-      margin-right: 17.25rem;
-    }
-  }
+      &__text {
+        margin-bottom: 3.5rem;
 
-  .section-about-detail{
-    text-align: center;
-    background: #E8E8E8;
-    padding-top: 5rem;
-    .section-about-detail__text{
-      .title{
-        margin-bottom: 4.25rem;
+        .text {
+          margin-bottom: 3rem;
+        }
       }
-      .text{
-        margin-bottom: 3rem;
-      }
-      p{
-        margin-bottom: 0rem;
+
+      &__img {
+        margin-left: 17.25rem;
+        margin-right: 17.25rem;
       }
     }
-  }
 
-  .section_about-member{
-    &__body{
-      p{
+    .section-detail {
+      text-align: center;
+      background: #E8E8E8;
+      padding-top: 5rem;
+
+      &__text {
+        .text {
+          margin-bottom: 3rem;
+        }
+
+        p {
+          margin-bottom: 0rem;
+        }
+      }
+    }
+
+    .section-member {
+      &__body {
+        p {
           margin-bottom: 2rem;
+        }
       }
-    }
-    .button{
-      margin-top: 0.75rem;
-      width: 30%;
-    }
-  }
 
-  .section-about-symposium{
-    &__body{
-      p{
-        margin-bottom: 2rem;
+      .button {
+        margin-top: 0.75rem;
+        margin-bottom: 3.5rem;
       }
     }
-    .button{
-      margin-top: 0.75rem;
-      width: 30%;
+
+    .section-symposium {
+      &__body {
+        p {
+          margin-bottom: 2rem;
+        }
+      }
+
+      .button {
+        margin-top: 0.75rem;
+        margin-bottom: 3.5rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      align-items: center;
+    }
+
+    .button {
+      position: relative;
+      //width: 15%;
+      z-index: 1;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      color: #ffffff;
+      display: inline-block;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -2;
+        background: #867C84;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .button-right {
+      margin: 0;
+
+      &:before {
+        transform: skew(-20deg)
+      }
+
+      &:hover {
+        color: #B48362;
+
+        &:before {
+          background: #ffffff;
+        }
+      }
+    }
+
+    .button-left {
+      &:before {
+        transform: skew(20deg)
+      }
+
+      &:hover {
+        color: #8CBCBF;
+
+        &:before {
+          background: #ffffff;
+        }
+      }
     }
   }
 </style>
