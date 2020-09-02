@@ -32,7 +32,13 @@ export default {
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
+      {hid: 'description', name: 'description', content: '昭和女子大学内の学生主体プロジェクトに対し、プレゼンテーションの場をオンライン上に創造し、大学内外に発信するポータルサイトです。'},
+      {hid: 'og:site_name', property: 'og:site_name', content: 'PROJECT FES 2020【大学生のための応援サイト】'},
+      {hid: 'og:type', property: 'og:type', content: 'article'},
+      {hid: 'og:image', property: 'og:image', content: `https://project-fes.web.app/og_img.jpg`},
+
+      {hid: 'twitter:card', property: 'twitter:card', content: `summary`},
+      {hid: 'twitter:image', property: 'twitter:image', content: `https://project-fes.web.app/og_img.jpg`},
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
