@@ -20,13 +20,13 @@
 
 .isPc {
   @include mediaquery-sm {
-    display: none;
+    display: none !important;
   }
 }
 
 .isSp {
   @include mediaquery-not-sm {
-    display: none;
+    display: none !important;
   }
 }
 

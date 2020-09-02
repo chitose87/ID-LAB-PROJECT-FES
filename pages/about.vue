@@ -29,7 +29,7 @@
         P.text
           | 選考を通して選ばれたプロジェクト団体に対する賞の授与を予定しています。
         P
-          | アワード形式の催し物」と捉えてもらえるとわかりやすいと思います。
+          | アワード形式の催し物と捉えてもらえるとわかりやすいと思います。
       .section-detail__img
 
     section.section-member.section
@@ -89,7 +89,7 @@
     }
 
     .section-mv {
-      height: 20vh;
+      height: 25vh;
 
       &__bg {
         position: sticky;
@@ -115,7 +115,10 @@
       text-align: center;
       background: #E8E8E8;
       padding-top: 5rem;
-
+      @include mediaquery-sm{
+        padding-right: 3rem;
+        padding-left: 3rem;
+      }
       &__text {
         margin-bottom: 3.5rem;
 
@@ -125,8 +128,8 @@
       }
 
       &__img {
-        margin-left: 17.25rem;
-        margin-right: 17.25rem;
+        margin: auto;
+        width: 70vw;
       }
     }
 
@@ -134,7 +137,10 @@
       text-align: center;
       background: #E8E8E8;
       padding-top: 5rem;
-
+      @include mediaquery-sm{
+        padding-right: 3rem;
+        padding-left: 3rem;
+      }
       &__text {
         .text {
           margin-bottom: 3rem;
@@ -147,7 +153,21 @@
     }
 
     .section-member {
+      @include mediaquery-not-sm {
+        padding-left: 6rem;
+      }
+      &__head{
+        @include mediaquery-sm{
+          padding-left: 3rem;
+          padding-right: 3rem;
+        }
+      }
+
       &__body {
+        @include mediaquery-sm{
+          padding-left: 3rem;
+          padding-right: 3rem;
+        }
         p {
           margin-bottom: 2rem;
         }
@@ -160,7 +180,20 @@
     }
 
     .section-symposium {
+      @include mediaquery-not-sm {
+        padding-right: 4rem;
+      }
+      &__head{
+        @include mediaquery-sm{
+          padding-left: 3rem;
+          padding-right: 3rem;
+        }
+      }
       &__body {
+        @include mediaquery-sm{
+          padding-left: 3rem;
+          padding-right: 3rem;
+        }
         p {
           margin-bottom: 2rem;
         }
@@ -179,7 +212,6 @@
 
     .button {
       position: relative;
-      //width: 15%;
       z-index: 1;
       text-align: center;
       margin-left: auto;

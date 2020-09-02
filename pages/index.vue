@@ -34,8 +34,9 @@
         .head
           img(src="/imgs/project.svg")
         NewReports
-        a.button.button-blue(href="#")
-          span View More
+        .foot
+          a.button.button-blue(href="#")
+            span View More
 
 
     section.section_project.section
@@ -55,7 +56,7 @@
           a.button.button-right(href="#")
             span View More
 
-    section.section_entry
+    section.section_entry.section
       .container
         .skew-box.skew-box--left.skew-box--blue
           .section__head
@@ -111,7 +112,7 @@
     }
 
     .section {
-      padding-top: 9rem;
+      padding-top: 4.5rem;
       padding-bottom: 4.5rem;
       background-color: #E8E8E8;
       border: #E8E8E8;
@@ -131,12 +132,16 @@
 
     .section-mv {
       height: 100vh;
-
       &__bg {
         position: sticky;
         top: 0;
         height: 0;
         z-index: -1;
+        .section-mv__catch{
+          img{
+
+          }
+        }
       }
 
       &__body {
@@ -212,7 +217,9 @@
     }
 
     .section_about {
-
+      @include mediaquery-not-sm {
+        padding-right: 2rem;
+      }
       p {
         margin-bottom: 2.5rem;
       }
@@ -225,23 +232,23 @@
     .section_reports {
       background-color: #8CBCBF;
 
-      .button {
-      }
-
       .head {
         text-align: center;
       }
 
-      a {
-        align-items: end;
+      .foot{
+        text-align: center;
+        a {
+          align-items: end;
+        }
       }
 
-      .button {
-        text-align: center;
-      }
     }
 
     .section_project {
+      @include mediaquery-not-sm {
+        padding-right: 2rem;
+      }
       p {
         margin-bottom: 1.5rem;
       }
@@ -253,7 +260,9 @@
     }
 
     .section_entry {
-
+      @include mediaquery-not-sm {
+        padding-left: 2rem;
+      }
       p {
         margin-bottom: 1.5rem;
       }
@@ -265,6 +274,9 @@
     }
 
     .section_sponsor {
+      @include mediaquery-not-sm {
+        padding-right: 2rem;
+      }
       p {
         margin-bottom: 2.5rem;
       }
@@ -350,14 +362,6 @@
           background: #ffffff;
         }
       }
-    }
-
-
-    .section_entry {
-      padding-top: 9rem;
-      padding-bottom: 4.5rem;
-      padding-left: 4.5rem;
-      background-color: #e8e8e8;
     }
   }
 </style>

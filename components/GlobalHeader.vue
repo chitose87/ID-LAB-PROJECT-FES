@@ -50,10 +50,10 @@
       }
     }
 
-    //menu
     &__menu {
       display: flex;
       justify-content: start;
+      margin-right: 2rem;
 
       &__item {
         text-decoration: none;

@@ -7,17 +7,29 @@
         p
           | ID Lab
       .global-footer__links
-        a.global-footer__links__item(href="#")
-          img(src="/imgs/id.lab.svg" alt="id")
+        a.global-footer__links__item(href="https://sw-id-lab.web.app/")
+          .button
+            img(src="/imgs/id.lab.svg" alt="id")
+          p.text
+            | id.lab
           //span ID lab
-        a.global-footer__links__item(href="#")
-          img(src="/imgs/note.svg" alt="note")
+        a.global-footer__links__item(href="https://note.com/project_fes")
+          .button
+            img(src="/imgs/note.svg" alt="note")
+          p.text
+            | note
           //span note
-        a.global-footer__links__item(href="#")
-          img(src="/imgs/twitter.svg" alt="twitter")
+        a.global-footer__links__item(href="https://twitter.com/u_project_fes")
+          .button
+            img(src="/imgs/twitter.svg" alt="twitter")
+          p.text
+            | Twitter
           //span Twitter
-        a.global-footer__links__item(href="#")
-          img(src="/imgs/insta.svg" alt="instagram")
+        a.global-footer__links__item(href="https://www.instagram.com/u.project.fes/")
+          .button
+            img(src="/imgs/insta.svg" alt="instagram")
+          p.text
+            | Instagram
           //span instagram
     .global-footer__copyright
       small ©️ ID Lab
@@ -55,18 +67,28 @@
     &__links {
       display: flex;
       justify-content: center;
-
       &__item {
+        @include mediaquery-not-sm {
+          width: 7rem;
+        }
+        @include mediaquery-sm{
+          width: 5rem;
+        }
         margin-top: 2.5rem;
         margin-bottom: 2.5rem;
-        margin-left: 2.25rem;
-        margin-right: 2.25rem;
-        img {
+        .button{
 
         }
+        .text{
+          color: white;
+          margin-top: 1rem;
+          @include mediaquery-sm{
+            font-size: 14px;
+          }
+          p {
+            text-decoration: none;
 
-        span {
-
+          }
         }
       }
     }
