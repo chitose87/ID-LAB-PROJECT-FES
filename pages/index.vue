@@ -4,15 +4,16 @@
       .section-mv__bg
         .section-mv__catch
           picture
-            img(src="/imgs/mv-bg.svg")
-      .section-mv__body
-        .container
+            img(src="/imgs/mv-bg.jpg")
+      .section-mv__body.container
+        .section-mv__body__copy
           picture
-            .main-img
-              img(src="/imgs/mv-catch-1.svg")
-            .logo-img
-              img.logo(src="/imgs/logo.svg")
-          a.entry-button(href="#")
+            img(src="/imgs/mv-copy.png")
+        .section-mv__body__logo
+          picture
+            img(src="/imgs/logo.svg")
+        .section-mv__body__btns
+          a.button.button-primary(href="#")
             span Entry
 
     section.section_about.section
@@ -26,18 +27,17 @@
               | 学生主催プロジェクトの認知を大学内外へ広げるためプレゼンテーションの場を提供しています。
             p
               | 発信したい学生の背中を押す企画”PROJECT FES”、始まります。
-            a.button.button-right(href="#")
+            a.button.button-primary(href="#")
               span View More
 
     section.section_reports
       .container
-        .head
+        .section_reports__head
           img(src="/imgs/project.svg")
         NewReports
-        .foot
-          a.button.button-blue(href="#")
+        .section_reports__foot
+          a.button.button-primary(href="#")
             span View More
-
 
     section.section_project.section
       .container
@@ -53,7 +53,7 @@
               | Project ページではnoteを使って各プロジェクトが活動記録を発信中！
             p
               | 各プロジェクトの活動を覗いてみませんか？
-          a.button.button-right(href="#")
+          a.button.button-primary(href="#")
             span View More
 
     section.section_entry.section
@@ -72,7 +72,7 @@
               | PROJECT FESで、みなさんの活動を発信してみませんか？
             p
               | 応募条件/応募方法など詳細はEntryページへ！
-          a.button.button-left(href="#")
+          a.button.button-primary(href="#")
             span View More
 
     section.section_sponsor.section
@@ -85,7 +85,7 @@
               | クラウドファンディングにて協賛/協力していただいた団体を紹介しています。
             p
               | 選考された団体への賞についての詳細や要件も記載しています。
-          a.button.button-right(href="#")
+          a.button.button-primary(href="#")
             span View More
 </template>
 
@@ -107,7 +107,7 @@
 
 <style lang="scss">
   .top-page {
-    p{
+    p {
       margin-bottom: 0;
     }
 
@@ -130,96 +130,95 @@
       margin-right: 7%;
     }
 
+    // ----- section-mv
     .section-mv {
       height: 100vh;
+
       &__bg {
         position: sticky;
         top: 0;
         height: 0;
         z-index: -1;
-        .section-mv__catch{
-          img{
 
+        .section-mv__catch {
+          width: 100%;
+          height: 100vh;
+
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
           }
         }
       }
 
       &__body {
-        display: block;
-        text-align: center;
-        @include mediaquery-not-sm {
-          margin-top: 10rem;
-          margin-bottom: 6.25rem;
-        }
-        @include mediaquery-sm{
-          margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        height: 100%;
+
+        &__copy {
+          img {
+            width: 100%;
+            height: auto;
+          }
         }
 
-        img {
-          object-fit: cover;
-        }
-
-        .logo {
+        &__logo {
           margin-top: 6.25rem;
           margin-bottom: 6.25rem;
-          @include mediaquery-not-sm {
-            height: 200px;
-          }
-          @include mediaquery-sm{
-            height: 100px;
-          }
-        }
-
-        a {
-          text-decoration: none;
-          align-items: center;
-        }
-
-        .entry-button {
-          position: relative;
-          z-index: 1;
           text-align: center;
-          margin-left: auto;
-          margin-right: auto;
-          color: #ffffff;
-          display: inline-block;
-          padding-top: 1rem;
-          padding-bottom: 1rem;
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
 
-          &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            border: 3px solid #ffffff;
-            z-index: -2;
-            top: 0;
-            left: 0;
-            transform: skew(-20deg)
-          }
-
-          &:hover {
-            color: #867C84;
-
-            &:before {
-              background: #ffffff;
+          img {
+            filter: invert(1);
+            width: auto;
+            @include mediaquery-not-sm {
+              height: 200px;
+            }
+            @include mediaquery-sm {
+              height: 100px;
             }
           }
+        }
 
-          span {
-            font-size: 3vh;
+        &__btns {
+          text-align: center;
+
+          .button-primary {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+
+            &:before {
+              border: 3px solid #ffffff;
+              background-color: transparent;
+              transform: skew(-20deg)
+            }
+
+            span {
+              font-size: 3vh;
+            }
+
+            &:hover {
+              color: #867C84;
+
+              &:before {
+                background: #ffffff;
+              }
+            }
           }
         }
       }
     }
 
+    // ----- section_about
     .section_about {
       @include mediaquery-not-sm {
         padding-right: 2rem;
       }
+
       p {
         margin-bottom: 2.5rem;
       }
@@ -229,26 +228,40 @@
       }
     }
 
+    // ----- section_reports
     .section_reports {
       background-color: #8CBCBF;
 
-      .head {
+      &__head {
         text-align: center;
       }
 
-      .foot{
+      &__foot {
         text-align: center;
+
         a {
           align-items: end;
         }
       }
 
+      .button {
+        margin-bottom: 2.5rem;
+
+        &:before {
+          transform: skew(-20deg)
+        }
+
+        &:hover {
+          color: #8CBCBF;
+        }
+      }
     }
 
     .section_project {
       @include mediaquery-not-sm {
         padding-right: 2rem;
       }
+
       p {
         margin-bottom: 1.5rem;
       }
@@ -263,6 +276,7 @@
       @include mediaquery-not-sm {
         padding-left: 2rem;
       }
+
       p {
         margin-bottom: 1.5rem;
       }
@@ -277,90 +291,13 @@
       @include mediaquery-not-sm {
         padding-right: 2rem;
       }
+
       p {
         margin-bottom: 2.5rem;
       }
 
       .button {
         margin-bottom: 3.5rem;
-      }
-    }
-
-
-    a {
-      text-decoration: none;
-      align-items: center;
-    }
-
-    .button {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      color: #ffffff;
-      display: inline-block;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-
-      &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        z-index: -2;
-        background: #867C84;
-        top: 0;
-        left: 0;
-      }
-    }
-
-    .button-right {
-      margin: 0;
-
-      &:before {
-        transform: skew(-20deg)
-      }
-
-      &:hover {
-        color: #B48362;
-
-        &:before {
-          background: #ffffff;
-        }
-      }
-    }
-
-    .button-left {
-      &:before {
-        transform: skew(20deg)
-      }
-
-      &:hover {
-        color: #8CBCBF;
-
-        &:before {
-          background: #ffffff;
-        }
-      }
-    }
-
-    .button-blue {
-      margin-bottom: 2.5rem;
-
-      &:before {
-        transform: skew(-20deg)
-      }
-
-      &:hover {
-        color: #8CBCBF;
-
-        &:before {
-          background: #ffffff;
-        }
       }
     }
   }

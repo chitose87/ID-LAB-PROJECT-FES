@@ -34,6 +34,10 @@
     background: #FCF8F3;
     opacity: 0.84;
 
+    @include mediaquery-sm{
+      display: none;
+    }
+
     &__body {
       display: flex;
       align-items: center;

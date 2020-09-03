@@ -11,6 +11,10 @@
   }
 }
 
+//*{
+//  outline: red 2px solid;
+//}
+
 @import "reboot-custom";
 @import "animation";
 @import "font-style";
@@ -41,6 +45,49 @@
   @include mediaquery-sm {
     padding-left: $gutter + 0px;
     padding-right: $gutter + 0px;
+  }
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  span {
+    position: relative;
+  }
+
+  &-primary {
+    color: $color-text-white;
+
+    &:before {
+      background: #867C84;
+    }
+
+    &:hover {
+      color: #B48362;
+      /*  color: #8CBCBF;*/
+
+      &:before {
+        background: #ffffff;
+      }
+    }
+  }
+
+  &-secondary {
+
   }
 }
 
