@@ -16,77 +16,78 @@
           a.button.button-primary(href="#")
             span Entry
 
-    section.section_about.section
-      .container
-        .skew-box.skew-box--right
-          .section__head
-            h3.section__title About Us
-            p.section__subtitle What’s “PROJECT FES”?
-          .section__body
-            p.text-center
-              | 学生主催プロジェクトの認知を大学内外へ広げるためプレゼンテーションの場を提供しています。
-            p
-              | 発信したい学生の背中を押す企画”PROJECT FES”、始まります。
+    .top-page__wrap
+      section.section_about.section
+        .container
+          .skew-box.skew-box--right
+            .section__head
+              h3.section__title About Us
+              h4.section__subtitle What’s “PROJECT FES”?
+            .section__body
+              p.text-center
+                | 学生主催プロジェクトの認知を大学内外へ広げるためプレゼンテーションの場を提供しています。
+              p
+                | 発信したい学生の背中を押す企画”PROJECT FES”、始まります。
+              a.button.button-primary(href="#")
+                span View More
+
+      section.section_reports
+        .container
+          .section_reports__head
+            img(src="/imgs/project.svg")
+          NewReports
+          .section_reports__foot
             a.button.button-primary(href="#")
               span View More
 
-    section.section_reports
-      .container
-        .section_reports__head
-          img(src="/imgs/project.svg")
-        NewReports
-        .section_reports__foot
-          a.button.button-primary(href="#")
-            span View More
+      section.section_project.section
+        .container
+          .skew-box.skew-box--right
+            .section__head
+              h3.section__title Projects
+            .section__body
+              p
+                | 「昭和女子大生の活動を発信・記録する場がここにある」
+              p
+                | 昭和女子大生は日々、学内外でプロジェクト活動に取り組んでいます！
+              p
+                | Project ページではnoteを使って各プロジェクトが活動記録を発信中！
+              p
+                | 各プロジェクトの活動を覗いてみませんか？
+              a.button.button-primary(href="#")
+                span View More
 
-    section.section_project.section
-      .container
-        .skew-box.skew-box--right
-          .section__head
-            h3 Projects
-          .section__body
-            p
-              | 「昭和女子大生の活動を発信・記録する場がここにある」
-            p
-              | 昭和女子大生は日々、学内外でプロジェクト活動に取り組んでいます！
-            p
-              | Project ページではnoteを使って各プロジェクトが活動記録を発信中！
-            p
-              | 各プロジェクトの活動を覗いてみませんか？
-          a.button.button-primary(href="#")
-            span View More
+      section.section_entry.section
+        .container
+          .skew-box.skew-box--left.skew-box--blue
+            .section__head
+              h3.section__title Entry
+            .section__body
+              p.text-center
+                | PROJECT FESでは参加プロジェクトを大募集中！
+              p
+                | なにかに熱中しているひと、自分の活動をPRしたいひと、
+              p
+                | こっそり素敵な趣味を持っているひと、
+              p
+                | PROJECT FESで、みなさんの活動を発信してみませんか？
+              p
+                | 応募条件/応募方法など詳細はEntryページへ！
+              a.button.button-primary(href="#")
+                span View More
 
-    section.section_entry.section
-      .container
-        .skew-box.skew-box--left.skew-box--blue
-          .section__head
-            h3.text-center Entry
-          .section__body
-            p.text-center
-              | PROJECT FESでは参加プロジェクトを大募集中！
-            p
-              | なにかに熱中しているひと、自分の活動をPRしたいひと、
-            p
-              | こっそり素敵な趣味を持っているひと、
-            p
-              | PROJECT FESで、みなさんの活動を発信してみませんか？
-            p
-              | 応募条件/応募方法など詳細はEntryページへ！
-          a.button.button-primary(href="#")
-            span View More
-
-    section.section_sponsor.section
-      .container
-        .skew-box.skew-box--right
-          .section__head
-            h3.text-center Sponsor
-          .section__body
-            p.text-center
-              | クラウドファンディングにて協賛/協力していただいた団体を紹介しています。
-            p
-              | 選考された団体への賞についての詳細や要件も記載しています。
-          a.button.button-primary(href="#")
-            span View More
+      section.section_sponsor.section
+        .container
+          .skew-box.skew-box--right
+            .section__head
+              h3.section__title Sponsor
+            .section__body
+              p.text-center
+                | クラウドファンディングにて協賛/協力していただいた団体を紹介しています。
+              p
+                | 選考された団体への賞についての詳細や要件も記載しています。
+              a.button.button-primary(href="#")
+                span View More
 </template>
 
 <script lang="ts">
@@ -107,27 +108,10 @@
 
 <style lang="scss">
   .top-page {
-    p {
-      margin-bottom: 0;
-    }
-
-    .section {
-      padding-top: 4.5rem;
-      padding-bottom: 4.5rem;
+    &__wrap {
       background-color: #E8E8E8;
-      border: #E8E8E8;
-
-      &__head {
-        // 旧 section-head
-      }
-
-      &__body {
-      }
-    }
-
-    .container {
-      margin-left: 7%;
-      margin-right: 7%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
 
     // ----- section-mv
@@ -215,17 +199,6 @@
 
     // ----- section_about
     .section_about {
-      @include mediaquery-not-sm {
-        padding-right: 2rem;
-      }
-
-      p {
-        margin-bottom: 2.5rem;
-      }
-
-      .button {
-        margin-bottom: 3.5rem;
-      }
     }
 
     // ----- section_reports
@@ -258,47 +231,12 @@
     }
 
     .section_project {
-      @include mediaquery-not-sm {
-        padding-right: 2rem;
-      }
-
-      p {
-        margin-bottom: 1.5rem;
-      }
-
-      .button {
-        margin-top: 1rem;
-        margin-bottom: 3.5rem;
-      }
     }
 
     .section_entry {
-      @include mediaquery-not-sm {
-        padding-left: 2rem;
-      }
-
-      p {
-        margin-bottom: 1.5rem;
-      }
-
-      .button {
-        margin-top: 1rem;
-        margin-bottom: 3.5rem;
-      }
     }
 
     .section_sponsor {
-      @include mediaquery-not-sm {
-        padding-right: 2rem;
-      }
-
-      p {
-        margin-bottom: 2.5rem;
-      }
-
-      .button {
-        margin-bottom: 3.5rem;
-      }
     }
   }
 </style>
