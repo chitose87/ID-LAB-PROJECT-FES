@@ -3,17 +3,15 @@
     .reports__item(
       v-for="item in items"
     )
-      a.reports-button(:href="item.link")
-        .reports-button-head
-          .reports-button-head__img
+      p.reports__item__circle(v-html="item.creatorName")
+      a(:href="item.link")
+        .reports__item__head
+          .reports__item__img
             img(:src="item.thumbnail")
-          .reports-button-head__circle
-            p(v-html="item.creatorName")
-        .reports-button-body
-          .reports-button-body__text
-            p(v-html="item.pubDate")
-            h4.reports-button-body__title(v-html="item.title")
-            .hoge
+        .reports__item__body
+          p.reports__item__date(v-html="item.pubDate")
+          p.reports__item__title(v-html="item.title")
+            //.hoge
               a.button.button-right.isSp(href="#")
                 span 続きを読む
         //冒頭文
@@ -35,7 +33,7 @@
     items: any[] = [];
 
     mounted() {
-      fetch('https://us-central1-project-fes.cloudfunctions.net/noteRss?text=hashtag/cat')
+      fetch('https://us-central1-project-fes.cloudfunctions.net/noteRss?text=hashtag/project_fes')
         .then(response => response.json())
         .then(json => {
           this.$set(this, "items", json.items);
@@ -62,116 +60,162 @@
 
 <style lang="scss">
   .reports {
-    .reports-button {
-      margin-top: 3.5rem;
-      margin-bottom: 3.5rem;
+    @include mediaquery-not-sm {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+    @include mediaquery-sm {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+    }
+
+    &__item {
+      position: relative;
+      padding-bottom: 2rem;
+
       @include mediaquery-not-sm {
-        display: flex;
+        max-width: 80%;
+        margin: 3.5rem auto;
       }
-      &-head {
-        margin-top: 8rem;
+      @include mediaquery-sm {
+        width: 50%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      > a {
+        text-decoration: none;
+        color: $color-text;
+        @include mediaquery-not-sm {
+          display: flex;
+          align-items: flex-start;
+        }
+      }
+
+      &__head {
         z-index: 2;
         @include mediaquery-not-sm {
-          flex-basis: 45%;
+          flex: 1.5;
         }
         @include mediaquery-sm {
-          margin-bottom: -5rem;
-          text-align: center;
+          padding: 0 0.5rem;
+          position: relative;
+        }
+      }
+
+      &__body {
+        position: relative;
+        z-index: 1;
+        @include mediaquery-not-sm {
+          flex: 2;
+          margin-top: 2.5rem;
+          padding-top: 3rem;
+          padding-bottom: 2rem;
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+        @include mediaquery-sm {
+          padding-top: 4rem;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          margin-top: -3.5rem;
         }
 
-        &__img {
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: $color-white;
+          z-index: -2;
+          top: 0;
+          left: 0;
+          transform-origin: top left;
           @include mediaquery-not-sm {
-            text-align: right;
-          }
-
-          img {
-            width: 100%;
-            object-fit: cover;
-            @include mediaquery-not-sm {
-              height: 306px;
-            }
-            @include mediaquery-sm {
-              width: 120px;
-            }
-          }
-        }
-
-        &__circle {
-          @include mediaquery-not-sm {
-            position: relative;
-            z-index: 1;
-            margin-right: auto;
-            margin-left: -2.5rem;
-            margin-top: -15rem;
-            color: #414141;
-            display: inline-block;
-            padding: 1rem 2rem;
-            width: 50%;
-            text-align: center;
-
-            &:before {
-              content: "";
-              display: block;
-              position: absolute;
-              height: 100%;
-              width: 100%;
-              background: #ffffff;
-              z-index: -2;
-              top: 0;
-              left: 0;
-              transform: skew(-20deg)
-            }
+            transform: skew(-$skew2);
           }
           @include mediaquery-sm {
-            p {
-              color: #000000;
-            }
+            transform: skewY(15deg);
           }
         }
       }
 
-      &-body {
-        z-index: 1;
-        @include mediaquery-not-sm {
-          flex-basis: 55%;
-          margin-top: 5rem;
-        }
-        &__text {
+      &__img {
+        position: relative;
+        padding-top: 75%;
+
+        img {
+          position: absolute;
           top: 0;
+          left: 0;
           width: 100%;
-          position: relative;
-          z-index: 0;
-          color: #414141;
-          display: inline-block;
-          @include mediaquery-not-sm {
-            padding-top: 3.5rem;
-            padding-bottom: 3.5rem;
-            padding-left: 5rem;
-          }
-          @include mediaquery-sm{
-            padding-top: 12rem;
-          }
-          &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background: #ffffff;
-            z-index: -2;
-            top: 0;
-            left: 0;
-            transform-origin: top left;
-            @include mediaquery-not-sm {
-              transform: skew(-20deg);
-            }
-            @include mediaquery-sm {
-              transform: skewY(15deg);
-            }
-          }
-          .text {
-            margin-bottom: 2.5rem;
-          }
+          height: 100%;
+          object-fit: cover;
+          //@include mediaquery-not-sm {
+          //  height: 306px;
+          //}
+          //@include mediaquery-sm {
+          //  width: 120px;
+          //}
+        }
+      }
+
+      &__circle {
+        position: absolute;
+        z-index: 6;
+        display: inline-block;
+        margin: 0;
+
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: $color-white;
+          z-index: -2;
+          top: 0;
+          left: 0;
+          transform: skew(-$skew2);
+        }
+
+        @include mediaquery-not-sm {
+          font-size: 35px;
+          bottom: 0;
+          left: -3rem;
+          padding: 1.5rem 3rem;
+        }
+        @include mediaquery-sm {
+          top: -1.5rem;
+          left: 0;
+          padding: 0.5rem 1rem;
+        }
+      }
+
+
+      &__date {
+        @include mediaquery-not-sm {
+          font-size: 25px;
+        }
+        @include mediaquery-sm {
+          font-size: 14px;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      &__title {
+        @include mediaquery-not-sm {
+          font-size: 25px;
+        }
+        @include mediaquery-sm {
+          font-size: 18px;
         }
       }
 
@@ -184,28 +228,28 @@
           filter: opacity(0.76);
           transition: all 0.4s ease-in-out 0s;
 
-
-          .reports-button-head__img,
-          .reports-button-head__circle:before,
-          .reports-button-body__text:before {
+          .reports__item__img,
+          .reports__item__circle:before,
+          .reports__item__body:before {
             box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 1);
           }
         }
       }
 
-      .button-right {
+
+      /*.button-right {
         text-align: center;
         display: block;
         margin-top: 3.5rem;
         margin-bottom: 3.5rem;
-      }
+      }*/
 
-
-      h4 {
+      /*h4 {
         margin-top: 2.5rem;
         margin-bottom: 0;
-      }
-      .hoge {
+      }*/
+
+      /*.hoge {
         text-align: center;
 
         .button {
@@ -216,7 +260,7 @@
           margin-bottom: 0.75rem;
           margin-left: auto;
           margin-right: auto;
-          color: #ffffff;
+          color: $color-white;
           display: inline-block;
           padding-top: 1rem;
           padding-bottom: 1rem;
@@ -240,18 +284,19 @@
             margin: 0;
 
             &:before {
-              transform: skew(-20deg)
+              transform: skew(-$skew2)
             }
 
             &:hover {
-              color: #ffffff;
+              color: $color-white;
+
               &:before {
                 background: #414141;
               }
             }
           }
         }
-      }
+      }*/
     }
   }
 
