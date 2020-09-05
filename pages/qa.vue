@@ -16,28 +16,28 @@
             .section-detail__main
                 .box
                   .question
-                    h3  Q PROJECT FESは誰が運営しているの？
+                    h4  Q PROJECT FESは誰が運営しているの？
                   .answer
                     p
                       | 有志の学生で運営しています。
                     P
                       | 運営に関する活動はnoteにて発信しているので、詳しく
-                      a(href="#") 運営noteページ
+                      a(href="https://note.com/project_fes" alt="project_fes_note" target=" blank") 運営noteページ
                       | へ！
 
                 .box
                   .question
-                    h3 Q noteアカウントってどうやって作るの？
+                    h4 Q noteアカウントってどうやって作るの？
                   .answer
                     p
                       | note公式webサイトから作ることができます。
                     p
                       | note公式webサイトは
-                      a(href="#") こちら
+                      a(href="https://note.com/" alt="note" target=" blank") こちら
                       | から
                 .box
                   .question
-                    h3 Q 参加申し込みは誰でもできるの？
+                    h4 Q 参加申し込みは誰でもできるの？
                   .answer
                     p
                       | 昭和女子大学に通っている学生さんは申し込み可能です。
@@ -95,7 +95,7 @@
               p 日々違う方面で活動しているプロジェクトの活動内容や目標などを知ることのできる機会が増えればいいなと思っています。
           .section-notice__plans
             .title
-              h5 初回座談会予定
+              h4 初回座談会予定
             .text
               p 2020.◯◯.◯◯ (△)
               p 18:15~20:00
