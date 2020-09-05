@@ -13,7 +13,7 @@
           picture
             img(src="/imgs/logo.svg")
         .section-mv__body__btns
-          a.button.button-primary(href="#")
+          a.button.button-primary(href="https://note.com/project_fes/n/nb589092126eb" target="_entry")
             span Entry
 
     .top-page__wrap
@@ -28,7 +28,7 @@
                 | 学生主催プロジェクトの認知を大学内外へ広げるためプレゼンテーションの場を提供しています。
               p
                 | 発信したい学生の背中を押す企画”PROJECT FES”、始まります。
-              a.button.button-primary(href="#")
+              a.button.button-primary(href="/about")
                 span View More
 
       section.section_reports
@@ -37,7 +37,7 @@
             img(src="/imgs/project.svg")
           NewReports
           .section_reports__foot
-            a.button.button-primary(href="#")
+            a.button.button-primary(href="https://note.com/hashtag/PROJECT_FES?f=new" target="_projects")
               span View More
 
       section.section_project.section
@@ -54,7 +54,9 @@
                 | Project ページではnoteを使って各プロジェクトが活動記録を発信中！
               p
                 | 各プロジェクトの活動を覗いてみませんか？
-              a.button.button-primary(href="#")
+              span.button.button-disabled
+                span Coming Soon
+              //a.button.button-primary(href="#")
                 span View More
 
       section.section_entry.section
@@ -73,7 +75,7 @@
                 | PROJECT FESで、みなさんの活動を発信してみませんか？
               p
                 | 応募条件/応募方法など詳細はEntryページへ！
-              a.button.button-primary(href="#")
+              a.button.button-primary(href="https://note.com/project_fes/n/nb589092126eb")
                 span View More
 
       section.section_sponsor.section
@@ -86,7 +88,9 @@
                 | クラウドファンディングにて協賛/協力していただいた団体を紹介しています。
               p
                 | 選考された団体への賞についての詳細や要件も記載しています。
-              a.button.button-primary(href="#")
+              .button.button-disabled
+                span Coming Soon
+              //a.button.button-primary(href="#")
                 span View More
 </template>
 
@@ -171,7 +175,7 @@
         &__btns {
           text-align: center;
 
-          .button-primary {
+          .button-primary, .button-disabled {
             padding-left: 2.5rem;
             padding-right: 2.5rem;
 
@@ -204,22 +208,23 @@
     // ----- section_reports
     .section_reports {
       background-color: #8CBCBF;
+      padding-bottom: 3.5rem;
 
       &__head {
         text-align: center;
+
+        img {
+          @include mediaquery-sm {
+            width: 70%;
+          }
+        }
       }
 
       &__foot {
         text-align: center;
-
-        a {
-          align-items: end;
-        }
       }
 
       .button {
-        margin-bottom: 2.5rem;
-
         &:before {
           transform: skew(-20deg)
         }

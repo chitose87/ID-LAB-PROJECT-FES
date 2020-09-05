@@ -2,37 +2,26 @@
   footer.global-footer
     .global-footer__body
       .global-footer__pb
-        p
-          | Powered by
-        p
-          | ID Lab
+        p Powered by "ID Lab"
       .global-footer__links
-        a.global-footer__links__item(href="https://sw-id-lab.web.app/")
+        //a.global-footer__links__item(href="https://sw-id-lab.web.app/" target="_id lab")
           .button
             img(src="/imgs/id.lab.svg" alt="id")
           p.text
             | id.lab
           //span ID lab
-        a.global-footer__links__item(href="https://note.com/project_fes")
-          .button
-            img(src="/imgs/note.svg" alt="note")
-          p.text
-            | note
-          //span note
-        a.global-footer__links__item(href="https://twitter.com/u_project_fes")
-          .button
-            img(src="/imgs/twitter.svg" alt="twitter")
-          p.text
-            | Twitter
-          //span Twitter
-        a.global-footer__links__item(href="https://www.instagram.com/u.project.fes/")
-          .button
-            img(src="/imgs/insta.svg" alt="instagram")
-          p.text
-            | Instagram
-          //span instagram
+        a.global-footer__links__item(href="https://note.com/project_fes" target="_note")
+          img(src="/imgs/note.svg" alt="note")
+          span note
+        a.global-footer__links__item(href="https://twitter.com/u_project_fes" target="_tw")
+          img(src="/imgs/twitter.svg" alt="twitter")
+          span Twitter
+        a.global-footer__links__item(href="https://www.instagram.com/u.project.fes/" target="_instagram")
+          img(src="/imgs/insta.svg" alt="instagram")
+          span Instagram
+
     .global-footer__copyright
-      small ©️ ID Lab
+      small ©️PROJECT FES運営
 
 </template>
 
@@ -67,35 +56,43 @@
     &__links {
       display: flex;
       justify-content: center;
+      margin-top: 2.5rem;
+
       &__item {
+        text-decoration: none;
         @include mediaquery-not-sm {
           width: 7rem;
         }
-        @include mediaquery-sm{
-          width: 5rem;
+        @include mediaquery-sm {
+          width: 4.5rem;
+          padding-top: 0.5rem;
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
         }
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
-        .button{
 
+        img{
+          width: 30px;
+          height: 30px;
+          object-fit: contain;
         }
-        .text{
+
+        span {
+          display: block;
           color: white;
-          margin-top: 1rem;
-          @include mediaquery-sm{
+          margin-top: 0.5rem;
+          @include mediaquery-sm {
             font-size: 14px;
-          }
-          p {
-            text-decoration: none;
-
           }
         }
       }
     }
 
     &__copyright {
+      color: $color-text-white;
       background-color: #B48362;
       text-align: center;
+      line-height: 1;
+      padding: 0.5rem 0;
     }
   }
 
