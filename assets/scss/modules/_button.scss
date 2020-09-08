@@ -1,0 +1,53 @@
+
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 0.75rem 3.5rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  span {
+    position: relative;
+    font-size: 14px;
+  }
+
+  &-primary {
+    color: $color-text-white;
+
+    &:before {
+      background: #867C84;
+    }
+
+    &:hover {
+      color: $color-key2;
+
+      &:before {
+        background: #ffffff;
+      }
+    }
+  }
+
+  &-secondary {
+
+  }
+
+  &-disabled {
+    pointer-events: none;
+    color: $color-text-white;
+    opacity: 0.4;
+
+    &:before {
+      background: #867C84;
+    }
+  }
+}

@@ -71,7 +71,7 @@
 
   .section-footer__body {
     text-align: center;
-    background-color: #B48362;
+    background-color: $color-key2;
     padding-top: 4.5rem;
     padding-bottom: 4.5rem;
     .section-footer__head {

@@ -4,6 +4,8 @@
       a.global-header__logo(href="/")
         img(src="/imgs/logo.svg" alt="logo")
       .global-header__menu
+        a.global-header__menu__item(href="/")
+          span Top
         a.global-header__menu__item(href="/about")
           span About us
         a.global-header__menu__item(href="https://note.com/project_fes/n/nb589092126eb" target="_entry")

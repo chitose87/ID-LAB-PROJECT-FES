@@ -39,7 +39,7 @@
   .global-footer {
     &__body {
       text-align: center;
-      background-color: #8CBCBF;
+      background-color: $color-key;
       padding-top: 4.5rem;
       padding-bottom: 4.5rem;
     }
@@ -89,7 +89,7 @@
 
     &__copyright {
       color: $color-text-white;
-      background-color: #B48362;
+      background-color: $color-key2;
       text-align: center;
       line-height: 1;
       padding: 0.5rem 0;

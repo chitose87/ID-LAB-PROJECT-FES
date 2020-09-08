@@ -9,7 +9,7 @@
           .reports__item__img
             img(:src="item.thumbnail")
         .reports__item__body
-          p.reports__item__date(v-html="item.pubDate")
+          p.reports__item__date(v-html="getDate(item.pubDate)")
           p.reports__item__title(v-html="item.title")
             //.hoge
               a.button.button-right.isSp(href="#")
@@ -41,6 +41,12 @@
         .catch(e => {
           console.log(e)
         });
+
+    }
+
+    getDate(str: string) {
+      let d = new Date(str);
+      return `${d.getFullYear()}/${('0' + (d.getMonth() + 1)).substr(-2)}/${('0' + d.getDate()).substr(-2)}`;
     }
 
     getContent(content: string) {
@@ -150,6 +156,7 @@
       &__img {
         position: relative;
         padding-top: 75%;
+        background-color: $color-white;
 
         img {
           position: absolute;
@@ -231,7 +238,7 @@
           .reports__item__img,
           .reports__item__circle:before,
           .reports__item__body:before {
-            box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 1);
+            box-shadow: $box-shadow;
           }
         }
       }

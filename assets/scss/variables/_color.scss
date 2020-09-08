@@ -1,5 +1,4 @@
 // Color system
-
 $color-white: #fff !default;
 $color-gray-100: #f8f9fa !default;
 $color-gray-200: #e9ecef !default;
@@ -61,6 +60,7 @@ $colors: map-merge(
     $colors
 );
 
+
 $color-primary: $color-blue !default;
 $color-secondary: $color-gray-600 !default;
 $color-success: $color-green !default;
@@ -87,13 +87,38 @@ $theme-colors: map-merge(
 );
 
 // semantic name
-$color-border: $color-gray-400 !default;
-$color-border-light: $color-gray-500 !default;
-$color-border-alpha: rgba($color-black, .1) !default;
+$semantic-colors: () !default;
+$semantic-colors: map-merge(
+    (
+      "key":#8CBCBF,
+      "key2":#B48362,
+      "key3":red,
+      "border":$color-gray-400,
+      "border-light": $color-gray-500,
+      "border-alpha": rgba($color-black, .1),
+      "text": $color-gray-900,
+      "text-white": $color-white,
+      "attention": $color-red,
+      "link": $color-blue,
+      "modal-bg": rgba($color-black, .5),
+    ),
+    $semantic-colors
+);
 
-$color-text: $color-gray-900 !default;
-$color-text-white: $color-white !default;
+//aaaaa
+$color-key: var(--color-key);
+$color-key2: var(--color-key2);
+$color-key3: var(--color-key3);
 
-$color-attention: $color-red !default;
-$color-link: $color-blue !default;
-$color-modal-bg: rgba($color-black, .5) !default;
+$color-border: var(--color-border);
+$color-border-light: var(--color-border-light);
+$color-border-alpha: var(--color-border-alpha);
+
+$color-text: var(--color-text);
+$color-text-white: var(--color-text-white);
+
+$color-attention: var(--color-attention);
+$color-link: var(--color-link);
+$color-modal-bg: var(--color-modal-bg);
+
+

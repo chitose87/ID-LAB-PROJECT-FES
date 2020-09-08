@@ -28,11 +28,15 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'PROJECT FES 2020【大学生のための応援サイト】',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: '昭和女子大学内の学生主体プロジェクトに対し、プレゼンテーションの場をオンライン上に創造し、大学内外に発信するポータルサイトです。'},
+      {
+        hid: 'description',
+        name: 'description',
+        content: '昭和女子大学内の学生主体プロジェクトに対し、プレゼンテーションの場をオンライン上に創造し、大学内外に発信するポータルサイトです。'
+      },
       {hid: 'og:site_name', property: 'og:site_name', content: 'PROJECT FES 2020【大学生のための応援サイト】'},
       {hid: 'og:type', property: 'og:type', content: 'article'},
       {hid: 'og:image', property: 'og:image', content: `https://project-fes.web.app/og_img.jpg`},

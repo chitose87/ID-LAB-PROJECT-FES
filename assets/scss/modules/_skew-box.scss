@@ -36,7 +36,7 @@
     top: 4rem;
     width: 150%;
     z-index: -2;
-    background: linear-gradient(to right, #CFB09C, #B48362);
+    background: linear-gradient(to right, #CFB09C, $color-key2);
   }
 
   &:after {
@@ -85,7 +85,7 @@
   // ----- 寒色
   &--blue {
     &:before {
-      background: linear-gradient(to right, #8CBCBF, #93DDE2);
+      background: linear-gradient(to right, $color-key, #93DDE2);
     }
 
     &:after {

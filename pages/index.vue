@@ -75,7 +75,7 @@
                 | PROJECT FESで、みなさんの活動を発信してみませんか？
               p
                 | 応募条件/応募方法など詳細はEntryページへ！
-              a.button.button-primary(href="https://note.com/project_fes/n/nb589092126eb")
+              a.button.button-primary(href="https://note.com/project_fes/n/nb589092126eb" target="_entry")
                 span View More
 
       section.section_sponsor.section
@@ -116,6 +116,13 @@
       background-color: #E8E8E8;
       padding-top: 1rem;
       padding-bottom: 1rem;
+    }
+
+    .section {
+      &__title {
+        font-size: 60px;
+        font-weight: 500;
+      }
     }
 
     // ----- section-mv
@@ -180,7 +187,7 @@
             padding-right: 2.5rem;
 
             &:before {
-              border: 3px solid #ffffff;
+              border: 3px solid $color-white;
               background-color: transparent;
               transform: skew(-20deg)
             }
@@ -193,7 +200,7 @@
               color: #867C84;
 
               &:before {
-                background: #ffffff;
+                background: $color-white;
               }
             }
           }
@@ -207,7 +214,7 @@
 
     // ----- section_reports
     .section_reports {
-      background-color: #8CBCBF;
+      background-color: $color-key;
       padding-bottom: 3.5rem;
 
       &__head {
@@ -230,7 +237,7 @@
         }
 
         &:hover {
-          color: #8CBCBF;
+          color: $color-key;
         }
       }
     }

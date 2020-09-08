@@ -9,6 +9,10 @@
   @each $color, $value in $theme-colors {
     --#{$color}: #{$value};
   }
+
+  @each $color, $value in $semantic-colors {
+    --color-#{$color}: #{$value};
+  }
 }
 
 //*{
@@ -48,97 +52,9 @@
   }
 }
 
-// ----- Universal section
-.section {
-  margin-top: 4.5rem;
-  margin-bottom: 4.5rem;
-  overflow-x: hidden;
-
-  &__head {
-  }
-
-  &__title {
-    margin-top: 0;
-    font-size: 60px;
-  }
-
-  &__subtitle {
-    font-size: 25px;
-    margin-bottom: 1.5rem;
-  }
-
-  &__body {
-    @include mediaquery-not-sm {
-      font-size: 18px;
-    }
-    @include mediaquery-sm {
-      font-size: 16px;
-      width: 75%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .button {
-      margin-top: 2rem;
-    }
-
-    padding-bottom: 3.5rem;
-  }
-}
-
-
-.button {
-  display: inline-block;
-  position: relative;
-  padding: 0.75rem 3.5rem;
-  text-align: center;
-  text-decoration: none;
-
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-  }
-
-  span {
-    position: relative;
-    font-size: 14px;
-  }
-
-  &-primary {
-    color: $color-text-white;
-
-    &:before {
-      background: #867C84;
-    }
-
-    &:hover {
-      color: #B48362;
-      /*  color: #8CBCBF;*/
-
-      &:before {
-        background: #ffffff;
-      }
-    }
-  }
-
-  &-secondary {
-
-  }
-
-  &-disabled {
-    pointer-events: none;
-    color: $color-text-white;
-    opacity: 0.4;
-
-    &:before {
-      background: #867C84;
-    }
-  }
+.page-title {
+  color: $color-text-white;
+  font-size: 60px;
 }
 
 .module {

@@ -113,7 +113,7 @@
         height: 100%;
         transform: skew(-20deg);
         z-index: -1;
-        background-color: #B48362;
+        background-color: $color-key2;
       }
     }
   }

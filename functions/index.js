@@ -7,7 +7,14 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 exports.noteRss = functions.https.onRequest(async (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // var allowedOrigins = ['https://project-fes.web.app', 'http://localhost:3000'];
+  // var Origin = req.headers.Origin;
+  // if (allowedOrigins.indexOf(Origin) > -1) {
+  //   res.set('Access-Control-Allow-Origin', Origin);
+  // }
+
+  res.set('Access-Control-Allow-Origin', 'https://project-fes.web.app');
+  // res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');
   res.set('Access-Control-Allow-Headers', 'Content-Type, authorization');
 
