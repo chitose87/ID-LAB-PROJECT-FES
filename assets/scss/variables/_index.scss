@@ -6,6 +6,8 @@ $rem: 16px;
 $size-container: ($rem * 5 * 12) + ($rem * 2 * 11) + ($rem * 2 * 2);
 $spacer: 1rem !default;
 
+$tick: 0.4s;
+
 @import "color";
 @import "screen";
 @import "mediaquery";
