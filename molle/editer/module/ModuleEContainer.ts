@@ -73,12 +73,12 @@ export class ModuleEContainer extends ModuleE {
    * @param id
    */
   deleteChild(id: string) {
-    console.log("deleteChild", id);
-    this.$set(this, "children",
-      this.children.filter((via: { id: string, moduleId: string }) => via.id != id)
-    );
-    FirestoreMgr.itemUpdate(this.itemData!.id, {
-      value: this.itemData!.value.filter((via: string) => via != id)
-    });
+  //   console.log("deleteChild", id);
+  //   this.$set(this, "children",
+  //     this.children.filter((via: { id: string, moduleId: string }) => via.id != id)
+  //   );
+  //   FirestoreMgr.itemUpdate(this.itemData!.id, {
+  //     value: this.itemData!.value.filter((via: string) => via != id)
+  //   });
   }
 }

@@ -1,12 +1,21 @@
 <template lang="pug">
   .item-list-item-comp.list-group-item.list-group-item-action.pr-0.border-right-0(v-if="getItem()")
 
-    button.btn.btn-sm.btn-outline-secondary(
-      :class="{active:lsStore.storage.focusModuleId===itemId}"
-      :title="itemId"
-      @click="lsStore.update({key: 'focusModuleId',value:itemId})"
-    )
-      b(v-html="itemData.moduleId")
+    .d-flex.justify-content-between
+      button.btn.btn-sm.btn-outline-secondary(
+        :class="{active:lsStore.storage.focusModuleId===itemId}"
+        :title="itemId"
+        @click="lsStore.update({key: 'focusModuleId',value:itemId})"
+      )
+        b(v-html="itemData.moduleId")
+
+      //削除
+        v-if="!$parent.notDeleted"
+      button.btn.btn-sm.btn-danger.mr-2(
+        v-if="lsStore.storage.focusModuleId===itemId"
+        @click="deleteModule()"
+      ) x
+
     div(v-if="itemData.type === 'children'")
       .list-group.mt-3
         ItemListItemComp(
@@ -15,11 +24,11 @@
           :itemId="id"
           :dic="dic"
         )
-        .list-group-item
-          form.form-group.mb-0(@submit.prevent @submit="pushModule()")
+        .list-group-item.pr-0.border-right-0
+          form.form-group.d-flex.justify-content-between.mb-0.mr-2(@submit.prevent @submit="pushModule()")
             select.form-control.form-control-sm(v-model="pushModuleSelected")
               option(v-for="(item,key) in molleModules" :value="key" v-html="key")
-            button.btn.btn-sm.btn-block.btn-info(type="submit") +
+            button.btn.btn-sm.btn-info(type="submit") +
     //div(v-else="")
       p.mb-0(v-html="dic[itemId].value")
 
@@ -65,6 +74,14 @@
       batch.commit();
 
       lsStore.update({key: "focusModuleId", value: id});
+    }
+
+    deleteModule() {
+      let parent = <ItemListItemComp>this.$parent;
+
+      FirestoreMgr.itemUpdate(parent.itemId!, {
+        value: parent.itemData!.value.filter((via: string) => via != this.itemId)
+      });
     }
   }
 </script>
