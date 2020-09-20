@@ -1,17 +1,26 @@
 <template lang="pug">
   .editView
-    BoxE(
+    ItemListViewComp(
       v-if="pageData.main"
       :itemId="pageData.main"
     )
+    .editView__body
+      Box(
+        v-if="pageData.main"
+        :itemId="pageData.main"
+      )
+    ModulePropertyComp
       //BoxE(
       //  v-if="children.main && children.main.ref"
       //  :itemId="children.main"
       //)
-    ModuleTreeComp
     //ValueTreeComp(
     //  :pageData="pageData"
     //)
+    style.
+      [data-item-id="{{lsStore.storage.focusModuleId}}"] {
+        outline: rgba(255, 0, 0, 0.6) 2px solid;
+      }
 
     .bootstrap#bootstrap-container
 
@@ -26,13 +35,16 @@
   import {Singleton} from "~/molle/Singleton";
   import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
   import ValueTreeComp from "~/molle/ui/ValueTreeComp.vue";
-  import ModuleTreeComp from "~/molle/ui/ModuleTreeComp.vue";
   import {lsStore} from "~/utils/store-accessor";
+  import ModulePropertyComp from "~/molle/ui/ModulePropertyComp.vue";
+  import {Module} from "~/molle/ssr/module/Module";
+  import ItemListViewComp from "~/molle/ui/ItemListViewComp.vue";
 
   @Component({
-    components: {ModuleTreeComp, ValueTreeComp}
+    components: {ItemListViewComp, ModulePropertyComp, ValueTreeComp}
   })
   export default class EditView extends Vue {
+    lsStore = lsStore;
     store = Singleton.store;
     setMolleEditerModules = setMolleEditerModules();
 
@@ -88,6 +100,21 @@
 
     mounted() {
       console.log("mounted", this.$route.query.id);
+
+      this.$el.addEventListener("click", (e: any) => {
+        for (let i = 0; i < e.path.length; i++) {
+          let v = e.path[i].__vue__;
+          if (v && v instanceof Module) {
+            let module: Module = v;
+            lsStore.update({key: "focusModuleId", value: module.$props.itemId || module.$props.itemDataProp.id});
+            break;
+          }
+        }
+      })
+    }
+
+    onClick(e: any) {
+      console.log(e);
     }
 
     destroyed() {
@@ -96,6 +123,14 @@
 </script>
 
 <style lang="scss">
+  .editView {
+    display: flex;
+
+    &__body {
+      flex: 1;
+    }
+  }
+
   .module-e {
     position: relative;
     min-height: 1rem;

@@ -6,9 +6,9 @@
       button.btn.btn-sm.btn-outline-secondary(
         @mouseover="focus(true)"
         @mouseleave="focus(false)"
-        @click="lsStore.updateEditing({id:vueRef.$data.itemData.id})"
-        :class="{active:lsStore.editing.indexOf(vueRef.$data.itemData.id) >= 0}"
       )
+        //@click="lsStore.updateEditing({id:vueRef.$data.itemData.id})"
+        //:class="{active:lsStore.editing.indexOf(vueRef.$data.itemData.id) >= 0}"
         div
           //span moduleId:
           b(v-html="vueRef.$data.itemData.moduleId")
@@ -16,13 +16,14 @@
           span id:
           b(v-html="vueRef.$props.itemData.id")
 
-      button.btn.btn-sm.btn-outline-info(
-        v-if="tree.length"
-        @mouseover="focus(true)"
-        @mouseleave="focus(false)"
-        @click="updateEditingFamily(lsStore.editing.indexOf(vueRef.$data.itemData.id) == -1)"
-      )
-        span & Children
+      //
+        button.btn.btn-sm.btn-outline-info(
+          v-if="tree.length"
+          @mouseover="focus(true)"
+          @mouseleave="focus(false)"
+          @click="updateEditingFamily(lsStore.editing.indexOf(vueRef.$data.itemData.id) == -1)"
+        )
+          span & Children
 
     .list-group.mt-3(v-if="tree.length")
       ModuleTreeItemComp(
@@ -51,11 +52,15 @@
 
     // moduleEditor?: ModuleEditorComp;
 
-    beforeMount() {
+    hoge() {
+      return this.vueRef!.$children.length;
+    }
+
+    mounted() {
       this.update();
     }
 
-    @Watch("vueRef")
+    @Watch("vueRef.$children")
     update() {
       let tree = [];
       for (let child of this.vueRef!.$children) {
@@ -73,12 +78,12 @@
     }
 
     updateEditingFamily(flag: boolean) {
-      lsStore.updateEditing({id: this.vueRef!.$data.itemData.id, flag: flag});
-
-      for (let child of this.$children) {
-        //@ts-ignore
-        child.updateEditingFamily && child.updateEditingFamily(flag);
-      }
+      // lsStore.updateEditing({id: this.vueRef!.$data.itemData.id, flag: flag});
+      //
+      // for (let child of this.$children) {
+      //   //@ts-ignore
+      //   child.updateEditingFamily && child.updateEditingFamily(flag);
+      // }
     }
 
     // getActive() {

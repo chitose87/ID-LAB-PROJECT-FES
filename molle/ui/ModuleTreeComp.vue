@@ -1,13 +1,11 @@
 <template lang="pug">
   .module-tree-comp.bootstrap
-    button(@click="toggle=!toggle") 構造／Structure
-    b-sidebar(v-model="toggle" title="構造／Structure")
-      .list-group(v-if="toggle")
-        ModuleTreeItemComp.pr-3(
-          v-for="item in getTree()"
-          :key="item.itemId"
-          :vueRef="item"
-        )
+    .list-group
+      ModuleTreeItemComp.pr-3(
+        v-for="item in tree"
+        :key="item.itemId"
+        :vueRef="item"
+      )
 
 </template>
 
@@ -19,28 +17,43 @@
     components: {ModuleTreeItemComp}
   })
   export default class ModuleTreeComp extends Vue {
-    toggle: boolean = false;
+    tree: Vue[] = [];
 
     mounted() {
+      this.test();
     }
 
-    getTree() {
-      let tree = [];
+    @Watch("$parent.$children")
+    test() {
+      console.log(this.$parent.$children)
+      this.tree.length = 0;
       for (let child of this.$parent.$children) {
         if (child.$data && child.$data.itemData) {
-          tree.push(child);
+          this.tree.push(child);
         }
       }
-      return tree;
     }
+
+    // getTree() {
+    //   let tree = [];
+    //   for (let child of this.$parent.$children) {
+    //     if (child.$data && child.$data.itemData) {
+    //       tree.push(child);
+    //     }
+    //   }
+    //   return tree;
+    // }
   }
 </script>
 
 <style lang="scss">
   .module-tree-comp {
-    position: fixed;
-    top: 0;
-    left: 0;
+    background-color: $color-gray-100;
+    width: 200px;
+
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
 
     //z-index: $zindex-fixed;
   }

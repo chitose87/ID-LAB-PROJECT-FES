@@ -4,7 +4,9 @@ import {Module, VuexModule, Mutation, Action} from 'vuex-module-decorators'
 
 export default class lsStore extends VuexModule {
   private static prefix: string = "molle-ls-";
-  private storage: any = {};
+  storage = {
+    focusModuleId: ""
+  };
 
   editing: string[] = [];
 
@@ -13,13 +15,17 @@ export default class lsStore extends VuexModule {
     let v: string[] = JSON.parse(localStorage.getItem(lsStore.prefix + "editing") || "[]");
     v.forEach((id) => {
       this.editing.push(id);
-    })
+    });
+
+    this.storage = JSON.parse(localStorage.getItem(lsStore.prefix + "storage") || "{}");
+    console.log("lsStore", "initialized")
   }
 
   @Mutation
-  update(key: string, value: any) {
-    this.storage[key] = value;
-    localStorage.setItem(lsStore.prefix + key, JSON.stringify(value))
+  update(arg: { key: string, value: any }) {
+    // @ts-ignore
+    this.storage[arg.key] = arg.value;
+    localStorage.setItem(lsStore.prefix + "storage", JSON.stringify(this.storage))
   }
 
   // getAttr(key: string) {

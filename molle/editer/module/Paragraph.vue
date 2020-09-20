@@ -1,16 +1,12 @@
 <template lang="pug">
-  .module-e(
+  p.module(
     v-if="itemData.moduleId"
-    :class="{editing:isEditing()}"
+    :id="itemData.tagId"
+    :class="getClass(itemData)"
+    :style="getStyle(itemData)"
+    :data-item-id="itemData.id"
+    v-html="itemData.value || itemData.superValue"
   )
-    ModuleEditorComp(
-      :itemData="itemData"
-      :valueProfile="valueProfile"
-      :styleProfile="styleProfile")
-
-    Paragraph(
-      :itemDataProp="itemData"
-    )
 
 </template>
 

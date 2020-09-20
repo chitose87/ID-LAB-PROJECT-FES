@@ -1,40 +1,39 @@
 import {Vue} from "~/node_modules/vue-property-decorator";
-import {setMolleModules} from "~/molle/ssr/module";
-import BoxE from "~/molle/editer/module/BoxE.vue";
-import ColumnE from "~/molle/editer/module/ColumnE.vue";
-import HeadlineE from "./HeadlineE.vue";
-import ParagraphE from "~/molle/editer/module/ParagraphE.vue";
+import Box from "~/molle/editer/module/Box.vue";
+import Column from "~/molle/editer/module/Column.vue";
+import Headline from "./Headline.vue";
+import Paragraph from "~/molle/editer/module/Paragraph.vue";
+import ColumnBox from "~/molle/editer/module/ColumnBox.vue";
+import Card from "~/molle/editer/module/Card.vue";
+import Picture from "~/molle/editer/module/Picture.vue";
+import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
+import ListCardItem from "~/molle/editer/module/ListCardItem.vue";
 
 import ItemOptionSelect from "~/molle/editer/module/item-option/Select.vue";
 import firebase from "firebase";
 import ItemOptionButton from "~/molle/editer/module/item-option/Button.vue";
 import ItemOptionInput from "~/molle/editer/module/item-option/Input.vue";
-import ColumnBoxE from "~/molle/editer/module/ColumnBoxE.vue";
-import CardE from "~/molle/editer/module/CardE.vue";
-import PictureE from "~/molle/editer/module/PictureE.vue";
-import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
-import ListCardItemE from "~/molle/editer/module/ListCardItemE.vue";
-import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
+// import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
-import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
-import GrobalFooterE from "~/molle/editer/module/GrobalFooterE.vue";
-import SectionMvE from "~/molle/editer/module/SectionMvE.vue";
+// import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
+// import GrobalFooterE from "~/molle/editer/module/GrobalFooterE.vue";
+// import SectionMvE from "~/molle/editer/module/SectionMvE.vue";
 
-export const molleEditerModules = {
-  BoxE: BoxE,
-  ColumnE: ColumnE,
-  ColumnBoxE: ColumnBoxE,
-  HeadlineE: HeadlineE,
-  ParagraphE: ParagraphE,
-  PictureE: PictureE,
+export const molleModules = {
+  Box: Box,
+  Column: Column,
+  ColumnBox: ColumnBox,
+  Headline: Headline,
+  Paragraph: Paragraph,
+  Picture: Picture,
   // ButtonsE: ButtonsE,
 
-  CardE: CardE,
-  ListCardItemE: ListCardItemE,
-  SectionHeadE: SectionHeadE,
-  GrobalHeaderE: GrobalHeaderE,
-  GrobalFooterE: GrobalFooterE,
-  SectionMvE: SectionMvE,
+  Card: Card,
+  ListCardItem: ListCardItem,
+  // SectionHeadE: SectionHeadE,
+  // GrobalHeaderE: GrobalHeaderE,
+  // GrobalFooterE: GrobalFooterE,
+  // SectionMvE: SectionMvE,
 };
 
 export const InitialValue = {
@@ -57,8 +56,6 @@ export const InitialValue = {
 export type InitialValue = typeof InitialValue[keyof typeof InitialValue];
 
 export function setMolleEditerModules() {
-  setMolleModules();
-
   //item-options
   Vue.component("ItemOptionSelect", ItemOptionSelect);
   Vue.component("ItemOptionButton", ItemOptionButton);
@@ -66,9 +63,9 @@ export function setMolleEditerModules() {
   Vue.component("ItemOptionSpace", ItemOptionSpace);
 
   //modules
-  for (let key in molleEditerModules) {
+  for (let key in molleModules) {
     // @ts-ignore
-    Vue.component(key, molleEditerModules[key]);
+    Vue.component(key, molleModules[key]);
   }
 }
 

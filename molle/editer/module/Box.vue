@@ -1,33 +1,23 @@
 <template lang="pug">
-  .module-e(
+  component.module.box(
     v-if="itemData.moduleId"
-    :class="{editing:isEditing()}"
+    :is="itemData.option.tag || 'div'"
+    :id="itemData.tagId"
+    :class="getClass(itemData)"
+    :style="getStyle(itemData)"
+    :data-item-id="itemData.id"
   )
-    ModuleEditorComp.module-editor--box(
-      :itemOption="itemOption"
-      :itemData="itemData"
-      :valueProfile="valueProfile"
-      :styleProfile="styleProfile"
-    )
-
-    //.box(
     component(
-      :is="itemData.option.tag || 'div'"
-      :id="itemData.tagId"
-      :class="getClass(itemData)"
-      :style="getStyle(itemData)"
+      v-for="child in children"
+      v-if="child"
+      :key="child.id"
+      :is="child.moduleId"
+      :itemId="child.id"
     )
-      component(
-        v-for="child in children"
-        v-if="child"
-        :key="child.id"
-        :is="child.moduleId +'E'"
-        :itemId="child.id"
-      )
-      AddModule(v-if="isEditing()" @submit="addChild($event)")
-      div(v-else-if="children.length==0")
-        p.text-black-50 Not Item
-        AddModule(@submit="addChild($event)")
+    //AddModule(v-if="isEditing()" @submit="addChild($event)")
+    div(v-if="children.length==0")
+      p.text-black-50 Not Item
+      //AddModule(@submit="addChild($event)")
 
 </template>
 
