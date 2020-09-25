@@ -1,9 +1,11 @@
 <template lang="pug">
   .item-option-select
-    label
-      span.mr-1 {{profile.label}}:
-      select.form-control.form-control-sm(:value="option[profile.id]" @change="update($event.target.value)")
-        option(v-for="item in profile.select" :value="item" v-html="item")
+    label.form-inline
+      span.mr-1 {{label}}:
+      select.form-control.form-control-sm(
+        :value="data[dataKey]"
+        @change="update($event.target.value)")
+        option(v-for="item in select" :value="item" v-html="item")
 
 </template>
 
@@ -16,34 +18,15 @@
   /**
    */
   export default class ItemOptionSelect extends Vue {
-    @Prop() profile?: ItemOptionSelectProfile;
-    @Prop() option?: any;
+    @Prop() label?: string;
+    @Prop() select?: string[];
+    @Prop() data?: any;
+    @Prop() dataKey?: string;
 
     update(v: string) {
-      let update: any = Object.assign({}, this.option);
-      update[this.profile!.id] = v;
-      this.$emit("update", update);
-    }
-  }
-
-  export class ItemOptionSelectProfile {
-    name: string = "ItemOptionSelect";
-
-    id: string;
-    label: string;
-    // default: string;
-    select: string[];
-
-    constructor(opt: {
-      id: string,
-      label: string,
-      // default: string,
-      select: string[]
-    }) {
-      this.id = opt.id;
-      this.label = opt.label;
-      // this.default = opt.default;
-      this.select = opt.select;
+      let update: any = Object.assign({}, this.data);
+      update[this.dataKey!] = v;
+      this.$emit("change", update);
     }
   }
 </script>

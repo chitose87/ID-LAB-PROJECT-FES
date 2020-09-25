@@ -98,47 +98,12 @@
   import {Component, Vue} from "~/node_modules/nuxt-property-decorator";
   import Button from "~/molle/editer/module/item-option/Button.vue";
   import NewReports from "~/components/NewReports.vue";
-  import {ItemOptionSelectProfile} from "~/molle/editer/module/item-option/Select.vue";
-  import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
-  import {StyleProfile} from "~/molle/interface/StyleProfile";
-  import {InitialValue} from "~/molle/editer/module";
 
   @Component({
     layout: "static",
     components: {NewReports, Button}
   })
   export default class TopPage extends Vue {
-    itemOption = [
-      // new ItemOptionAddModuleProfile({
-      //   added: this.onAddModule
-      // })
-      new ItemOptionSelectProfile({
-        id: "tag",
-        label: "タグ",
-        select: ["", "section"]
-      })
-    ];
-    //value setting
-    valueProfile: ValueProfile = new ValueProfile({
-      types: [ValueType.children]
-    });
-
-    //style setting
-    styleProfile: StyleProfile = new StyleProfile({
-      container: false,
-      border: false,
-      margin: "",
-      padding: "",
-      // theme: {default: "", select: ["", "test"]},
-      // color: {default: "", select: ["", "dark"]},
-    });
-
-    created() {
-      // console.log("created", this.itemId!.id);
-      // this.init(InitialValue.Box);
-    }
-    mounted() {
-    }
   }
 </script>
 

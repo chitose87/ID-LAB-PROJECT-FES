@@ -6,13 +6,9 @@ import Paragraph from "~/molle/editer/module/Paragraph.vue";
 import ColumnBox from "~/molle/editer/module/ColumnBox.vue";
 import Card from "~/molle/editer/module/Card.vue";
 import Picture from "~/molle/editer/module/Picture.vue";
-import ItemOptionSpace from "~/molle/editer/module/item-option/Space.vue";
 import ListCardItem from "~/molle/editer/module/ListCardItem.vue";
 
-import ItemOptionSelect from "~/molle/editer/module/item-option/Select.vue";
 import firebase from "firebase";
-import ItemOptionButton from "~/molle/editer/module/item-option/Button.vue";
-import ItemOptionInput from "~/molle/editer/module/item-option/Input.vue";
 import BoxProfile from "~/molle/editer/module/BoxProfile.vue";
 // import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
@@ -72,12 +68,6 @@ export const InitialValue = {
 export type InitialValue = typeof InitialValue[keyof typeof InitialValue];
 
 export function setMolleEditerModules() {
-  //item-options
-  Vue.component("ItemOptionSelect", ItemOptionSelect);
-  Vue.component("ItemOptionButton", ItemOptionButton);
-  Vue.component("ItemOptionInput", ItemOptionInput);
-  Vue.component("ItemOptionSpace", ItemOptionSpace);
-
   //modules
   for (let key in molleModules) {
     // @ts-ignore
