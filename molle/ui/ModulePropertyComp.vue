@@ -26,6 +26,11 @@
           span.u_auto-input__static.form-control.form-control-sm(v-html="itemData.tagClass || 'class'")
           input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="itemData.tagClass" @change="update2('tagClass')" placeholder="class")
 
+      //profile
+      component(
+        v-if="molleModules[itemData.moduleId].profile"
+        :is="molleModules[itemData.moduleId].profile.options.name"
+      )
 </template>
 
 <script lang="ts">
@@ -33,6 +38,7 @@
   import {lsStore} from "~/utils/store-accessor";
   import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
+  import {molleModules} from "~/molle/editer/module";
 
   @Component({
     components: {}
@@ -41,6 +47,7 @@
 
     focusModuleId: string = "none";
     itemData: IItemStoreData | null = null;
+    molleModules = molleModules;
 
     getFocusModuleId() {
       if (this.focusModuleId != lsStore.storage.focusModuleId) {

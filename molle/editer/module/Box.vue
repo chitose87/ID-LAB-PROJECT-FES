@@ -1,6 +1,6 @@
 <template lang="pug">
   component.module.box(
-    v-if="itemData.moduleId"
+    v-if="itemData"
     :is="itemData.option.tag || 'div'"
     :id="itemData.tagId"
     :class="getClass(itemData)"
@@ -8,68 +8,31 @@
     :data-item-id="itemData.id"
   )
     component(
-      v-for="child in children"
-      v-if="child"
-      :key="child.id"
-      :is="child.moduleId"
-      :itemId="child.id"
+      v-for="id in itemData.value"
+      v-if="payload[id]"
+      :is="payload[id].moduleId"
+      :key="id"
+      :itemData="payload[id]"
+      :payload="payload"
     )
-    //AddModule(v-if="isEditing()" @submit="addChild($event)")
-    div(v-if="children.length==0")
+    div(v-if="itemData.value.length===0")
       p.text-black-50 Not Item
-      //AddModule(@submit="addChild($event)")
 
 </template>
 
 <script lang="ts">
   import {Component, Prop, Watch} from "~/node_modules/nuxt-property-decorator";
-  import StyleComp from "~/molle/editer/ui/StyleComp.vue";
-  import {StyleProfile} from "~/molle/interface/StyleProfile";
-  import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
-  import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
-  import {ModuleEContainer} from "~/molle/editer/module/ModuleEContainer";
-  import {InitialValue} from "~/molle/editer/module/index";
-  import AddModule from "~/molle/editer/ui/AddModule.vue";
-  import {ItemOptionSelectProfile} from "~/molle/editer/module/item-option/Select.vue";
+  import {Module} from "~/molle/ssr/module/Module";
 
   @Component({
-    components: {AddModule, ModuleEditorComp, StyleComp}
+    components: {}
   })
-  export default class BoxE extends ModuleEContainer {
-    itemOption = [
-      // new ItemOptionAddModuleProfile({
-      //   added: this.onAddModule
-      // })
-      new ItemOptionSelectProfile({
-        id: "tag",
-        label: "タグ",
-        select: ["", "section"]
-      })
-    ];
-    //value setting
-    valueProfile: ValueProfile = new ValueProfile({
-      types: [ValueType.children]
-    });
-
-    //style setting
-    styleProfile: StyleProfile = new StyleProfile({
-      container: false,
-      border: false,
-      margin: "",
-      padding: "",
-      // theme: {default: "", select: ["", "test"]},
-      // color: {default: "", select: ["", "dark"]},
-    });
-
-    created() {
-      // console.log("created", this.itemId!.id);
-      this.init(InitialValue.Box);
-    }
+  export default class Box extends Module {
   }
 </script>
 
 <style lang="scss">
-  .e {
-  }
+  .box {
 
+  }
 </style>

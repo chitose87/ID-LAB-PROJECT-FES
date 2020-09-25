@@ -6,8 +6,9 @@
     )
     .editView__body
       Box(
-        v-if="pageData.main"
-        :itemId="pageData.main"
+        v-if="pageData.main && fsStore.items"
+        :itemData="fsStore.items[pageData.main]"
+        :payload="fsStore.items"
       )
     ModulePropertyComp
       //BoxE(
@@ -35,7 +36,7 @@
   import {Singleton} from "~/molle/Singleton";
   import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
   import ValueTreeComp from "~/molle/ui/ValueTreeComp.vue";
-  import {lsStore} from "~/utils/store-accessor";
+  import {lsStore, fsStore} from "~/utils/store-accessor";
   import ModulePropertyComp from "~/molle/ui/ModulePropertyComp.vue";
   import {Module} from "~/molle/ssr/module/Module";
   import ItemListViewComp from "~/molle/ui/ItemListViewComp.vue";
@@ -45,6 +46,7 @@
   })
   export default class EditView extends Vue {
     lsStore = lsStore;
+    fsStore = fsStore;
     store = Singleton.store;
     setMolleEditerModules = setMolleEditerModules();
 
@@ -106,7 +108,7 @@
           let v = e.path[i].__vue__;
           if (v && v instanceof Module) {
             let module: Module = v;
-            lsStore.update({key: "focusModuleId", value: module.$props.itemId || module.$props.itemDataProp.id});
+            lsStore.update({key: "focusModuleId", value: module.$props.itemData.id});
             break;
           }
         }

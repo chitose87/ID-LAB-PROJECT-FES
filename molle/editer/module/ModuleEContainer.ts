@@ -9,25 +9,25 @@ export class ModuleEContainer extends ModuleE {
   children = <{ id: string, moduleId: string }[]>[];
 
   init(initialValue: InitialValue, onUpdate?: () => void) {
-    super.init(initialValue, () => {
-      this.children.length = 0;
-      for (let i in this.itemData!.value) {
-        let childId = this.itemData!.value[i];
-
-        FirestoreMgr.itemsRef.doc(childId).get()
-          .then((snap: firebase.firestore.DocumentSnapshot) => {
-            if (!snap.exists) {
-              //todo
-              return;
-            }
-            this.$set(this.children, i, {
-              id: childId,
-              moduleId: snap.data()!.moduleId
-            });
-            onUpdate && onUpdate();
-          });
-      }
-    });
+    // super.init(initialValue, () => {
+    //   this.children.length = 0;
+    //   for (let i in this.itemData!.value) {
+    //     let childId = this.itemData!.value[i];
+    //
+    //     FirestoreMgr.itemsRef.doc(childId).get()
+    //       .then((snap: firebase.firestore.DocumentSnapshot) => {
+    //         if (!snap.exists) {
+    //           //todo
+    //           return;
+    //         }
+    //         this.$set(this.children, i, {
+    //           id: childId,
+    //           moduleId: snap.data()!.moduleId
+    //         });
+    //         onUpdate && onUpdate();
+    //       });
+    //   }
+    // });
   }
 
   addChild(data: IItemStoreData) {

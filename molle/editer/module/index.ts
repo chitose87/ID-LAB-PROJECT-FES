@@ -13,27 +13,43 @@ import ItemOptionSelect from "~/molle/editer/module/item-option/Select.vue";
 import firebase from "firebase";
 import ItemOptionButton from "~/molle/editer/module/item-option/Button.vue";
 import ItemOptionInput from "~/molle/editer/module/item-option/Input.vue";
+import BoxProfile from "~/molle/editer/module/BoxProfile.vue";
 // import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
 // import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
 // import GrobalFooterE from "~/molle/editer/module/GrobalFooterE.vue";
 // import SectionMvE from "~/molle/editer/module/SectionMvE.vue";
 
-export const molleModules = {
-  Box: Box,
-  Column: Column,
-  ColumnBox: ColumnBox,
-  Headline: Headline,
-  Paragraph: Paragraph,
-  Picture: Picture,
+// export const molleModules = {
   // ButtonsE: ButtonsE,
-
-  Card: Card,
-  ListCardItem: ListCardItem,
   // SectionHeadE: SectionHeadE,
   // GrobalHeaderE: GrobalHeaderE,
   // GrobalFooterE: GrobalFooterE,
   // SectionMvE: SectionMvE,
+// };
+
+export const molleModules = {
+  Box: {
+    ref: Box,
+    profile: BoxProfile,
+    def: c("Box", "children")
+  },
+  Paragraph: {
+    ref: Paragraph,
+    // profile: BoxProfile,
+    def: c("Paragraph", "text")
+  },
+
+  // Column: {
+  //   ref: Column,
+  //   // profile: BoxProfile,
+  //   def: c("Box", "children")
+  // },
+  // ColumnBox: ColumnBox,
+  // Headline: Headline,
+  // Picture: Picture,
+  // Card: Card,
+  // ListCardItem: ListCardItem,
 };
 
 export const InitialValue = {
@@ -65,7 +81,12 @@ export function setMolleEditerModules() {
   //modules
   for (let key in molleModules) {
     // @ts-ignore
-    Vue.component(key, molleModules[key]);
+    Vue.component(key, molleModules[key].ref);
+    // @ts-ignore
+    if (molleModules[key].profile) {
+      // @ts-ignore
+      Vue.component(molleModules[key].profile.options.name, molleModules[key].profile);
+    }
   }
 }
 
