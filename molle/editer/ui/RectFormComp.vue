@@ -51,6 +51,7 @@
     @Watch("value")
     updateValue() {
       this.$set(this, "valueData", this.value);
+      console.log("updateValue")
 
       this.rect.all = this.value[this.label!];
       this.rect.top = this.value[this.label! + "-top"];

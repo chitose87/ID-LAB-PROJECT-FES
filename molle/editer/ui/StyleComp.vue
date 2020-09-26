@@ -3,37 +3,37 @@
     span.mr-3(v-if="permission.theme!==undefined")
       label
         span.mr-1 Theme:
-        select.form-control.form-control-sm(v-model="itemData.class.theme" @change="onUpdate('class',itemData.class)")
+        select.form-control.form-control-sm(v-model="dataClass.theme" @change="onUpdate('class',dataClass)")
           //option(v-for="theme in styleProfile.themeCollection" :val="theme" v-html="theme")
 
     span.mr-3(v-if="permission.color!==undefined")
       label
         span.mr-1 Color:
-        select.form-control.form-control-sm(v-model="itemData.class.color" @change="onUpdate('class',itemData.class)")
+        select.form-control.form-control-sm(v-model="dataClass.color" @change="onUpdate('class',dataClass)")
           //option(v-for="color in styleProfile.colorCollection" :val="color" v-html="color")
 
     //container
     span.mr-3(v-if="permission.container!==undefined")
       label
         span.mr-1 container:
-        input.form-control.form-control-sm(v-model="itemData.class.container" type="checkbox" @change="onUpdate('class',itemData.class)")
+        input.form-control.form-control-sm(v-model="dataClass.container" type="checkbox" @change="onUpdate('class',dataClass)")
 
     //Border
     span.mr-3(v-if="permission.border!==undefined")
       label
         span.mr-1 枠線:
-        input.form-control.form-control-sm(v-model="itemData.class.border" type="checkbox" @change="onUpdate('class',itemData.class)")
+        input.form-control.form-control-sm(v-model="dataClass.border" type="checkbox" @change="onUpdate('class',dataClass)")
 
     //TextHorizontal
     span.mr-3(v-if="permission.align!==undefined")
       label
         span.mr-1 行揃え:
-        select.form-control.form-control-sm(v-model="itemData.class.align" @change="onUpdate('class',itemData.class)")
+        select.form-control.form-control-sm(v-model="dataClass.align" @change="onUpdate('class',dataClass)")
           option(v-for="item in styleAlign" :value="item.value" v-html="item.label")
 
     //span.mr-3
       label Free Area
-        textarea(v-model="itemDatacss")
+        textarea(v-model="datacss")
 
     //margin
     span.mr-3(v-if="permission.margin!==undefined")
@@ -41,7 +41,7 @@
         span.mr-1 margin:
         RectFormComp(
           :label="'margin'"
-          :value="itemData.style"
+          :value="dataStyle"
           @update="val=>onUpdate('style',val)"
         )
 
@@ -51,7 +51,7 @@
         span.mr-1 padding:
         RectFormComp(
           :label="'padding'"
-          :value="itemData.style"
+          :value="dataStyle"
           @update="val=>onUpdate('style',val)"
         )
 
@@ -77,21 +77,25 @@
     @Prop() itemData?: IItemStoreData;
     @Prop() onUpdate?: (key: string, forceValue?: any) => void;
     @Prop() permission?: any;
+    // data = <IItemStoreData>{class: {}, style: {}};
+    dataClass = {};
+    dataStyle = {};
 
     // update(v: string) {
     //   let update: any = Object.assign({}, this.itemData);
     //   update[this.dataKey!] = v;
     //   this.$emit("change", update);
     // }
-    // created() {
-    //   this.changeItemData();
-    // }
-    //
-    // @Watch("itemData")
-    // changeItemData() {
-    //   this.$set(this, "data", this.itemData);
-    // }
-    //
+    created() {
+      this.changeItemData();
+    }
+
+    @Watch("itemData")
+    changeItemData() {
+      this.$set(this, "dataClass", Object.assign({}, this.itemData!.class));
+      this.$set(this, "dataStyle", Object.assign({}, this.itemData!.style));
+    }
+
     update2(key: string, forceValue?: any) {
       //   let update: any = {};
       //   if (forceValue || forceValue === false) {

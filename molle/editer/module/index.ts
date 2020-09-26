@@ -10,6 +10,7 @@ import ListCardItem from "~/molle/editer/module/ListCardItem.vue";
 
 import firebase from "firebase";
 import BoxProfile from "~/molle/editer/module/BoxProfile.vue";
+import ParagraphProfile from "~/molle/editer/module/ParagraphProfile.vue";
 // import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
 // import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
@@ -32,7 +33,7 @@ export const molleModules = {
   },
   Paragraph: {
     ref: Paragraph,
-    // profile: BoxProfile,
+    profile: ParagraphProfile,
     def: c("Paragraph", "text")
   },
 

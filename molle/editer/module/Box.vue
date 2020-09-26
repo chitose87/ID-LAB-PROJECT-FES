@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Watch} from "~/node_modules/nuxt-property-decorator";
+  import {Component} from "~/node_modules/nuxt-property-decorator";
   import {Module} from "~/molle/ssr/module/Module";
 
   @Component({

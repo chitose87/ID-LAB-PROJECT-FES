@@ -49,7 +49,7 @@
 
 <script lang="ts">
   import {Component, Vue, Watch, Prop} from "~/node_modules/nuxt-property-decorator";
-  import {lsStore} from "~/utils/store-accessor";
+  import {fsStore, lsStore} from "~/utils/store-accessor";
   import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
   import {molleModules} from "~/molle/editer/module";
@@ -59,25 +59,13 @@
   })
   export default class ModulePropertyComp extends Vue {
 
-    focusModuleId: string = "none";
+    // focusModuleId: string = "none";
     itemData: IItemStoreData | null = null;
     molleModules = molleModules;
 
     getFocusModuleId() {
-      if (this.focusModuleId != lsStore.storage.focusModuleId) {
-        this.focusModuleId = lsStore.storage.focusModuleId || "none";
-        this.itemData = null;
-
-        FirestoreMgr.itemsRef.doc(this.focusModuleId).get()
-          .then((snap: firebase.firestore.DocumentSnapshot) => {
-            if (!snap.exists) {
-              return;
-            }
-            this.itemData = <IItemStoreData>snap.data();
-            this.itemData.id = snap.id;
-          })
-      }
-      return this.focusModuleId;
+      this.itemData=fsStore.items[lsStore.storage.focusModuleId];
+      return lsStore.storage.focusModuleId;
     }
 
     mounted() {

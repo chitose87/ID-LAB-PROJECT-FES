@@ -19,24 +19,7 @@
   @Component({
     components: {ModuleEditorComp, StyleComp}
   })
-  export default class ParagraphE extends Module {
-    //value setting
-    // valueProfile: ValueProfile = new ValueProfile({
-    //   types: [ValueType.text]
-    // });
-    //
-    // //style setting
-    // styleProfile: StyleProfile = new StyleProfile({
-    //   border: false,
-    //   align: StyleAlign.None,
-    //   theme: {default: "", select: ["", "test"]},
-    //   color: {default: "", select: ["", "dark"]},
-    // });
-    // created() {
-    //   this.init(InitialValue.Paragraph);
-    // }
-
-    //Unique Methods
+  export default class Paragraph extends Module {
   }
 </script>
 

@@ -1,12 +1,5 @@
 <template lang="pug">
   div
-    ItemOptionSelect(
-      :label="'タグ'",
-      :select='["", "section"]'
-      :data="itemData.option || {}"
-      :dataKey="'tag'"
-      @change="(v)=>onUpdate('option',v)"
-    )
     StyleComp(
       :itemData="itemData"
       :onUpdate="onUpdate"
@@ -20,17 +13,18 @@
   import ItemOptionSelect from "./item-option/Select.vue";
   import StyleComp from "~/molle/editer/ui/StyleComp.vue";
   import {Profile} from "~/molle/editer/module/Profile";
+  import {StyleAlign} from "~/molle/interface/StyleProfile";
 
   @Component({
     components: {StyleComp, ItemOptionSelect}
   })
-  export default class BoxProfile extends Profile {
+  export default class ParagraphProfile extends Profile {
     //style setting
     stylePermission = {
-      container: false,
       border: false,
+      align: StyleAlign.None,
       margin: "",
-      padding: "",
+      // padding: "",
       // theme: {default: "", select: ["", "test"]},
       // color: {default: "", select: ["", "dark"]},
     };
