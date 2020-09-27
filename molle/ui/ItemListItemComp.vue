@@ -16,19 +16,26 @@
         @click="deleteModule()"
       ) x
 
-    div(v-if="itemData.type === 'children'")
-      .list-group.mt-3
-        ItemListItemComp(
-          v-for="id in itemData.value"
-          :key="id"
-          :itemId="id"
-          :dic="dic"
-        )
-        .list-group-item.pr-0.border-right-0
-          form.form-group.d-flex.justify-content-between.mb-0.mr-2(@submit.prevent @submit="pushModule()")
-            select.form-control.form-control-sm(v-model="pushModuleSelected")
-              option(v-for="(item,key) in molleModules" :value="key" v-html="key")
-            button.btn.btn-sm.btn-info(type="submit") +
+    .list-group.mt-3(v-if="itemData.type === 'children'")
+      ItemListItemComp(
+        v-for="id in itemData.value"
+        :key="id"
+        :itemId="id"
+        :dic="dic"
+      )
+      .list-group-item.pr-0.border-right-0
+        form.form-group.d-flex.justify-content-between.mb-0.mr-2(@submit.prevent @submit="pushModule()")
+          select.form-control.form-control-sm(v-model="pushModuleSelected")
+            option(v-for="(item,key) in molleModules" :value="key" v-html="key")
+          button.btn.btn-sm.btn-info(type="submit") +
+
+    .list-group.mt-3(v-if="itemData.type === 'group'")
+      ItemListItemComp(
+        v-for="id in itemData.value"
+        :key="id"
+        :itemId="id"
+        :dic="dic"
+      )
     //div(v-else="")
       p.mb-0(v-html="dic[itemId].value")
 

@@ -11,6 +11,8 @@ import ListCardItem from "~/molle/editer/module/ListCardItem.vue";
 import firebase from "firebase";
 import BoxProfile from "~/molle/editer/module/BoxProfile.vue";
 import ParagraphProfile from "~/molle/editer/module/ParagraphProfile.vue";
+import CardProfile from "~/molle/editer/module/CardProfile.vue";
+import HeadlineProfile from "~/molle/editer/module/HeadlineProfile.vue";
 // import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
 // import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
@@ -18,11 +20,11 @@ import ParagraphProfile from "~/molle/editer/module/ParagraphProfile.vue";
 // import SectionMvE from "~/molle/editer/module/SectionMvE.vue";
 
 // export const molleModules = {
-  // ButtonsE: ButtonsE,
-  // SectionHeadE: SectionHeadE,
-  // GrobalHeaderE: GrobalHeaderE,
-  // GrobalFooterE: GrobalFooterE,
-  // SectionMvE: SectionMvE,
+// ButtonsE: ButtonsE,
+// SectionHeadE: SectionHeadE,
+// GrobalHeaderE: GrobalHeaderE,
+// GrobalFooterE: GrobalFooterE,
+// SectionMvE: SectionMvE,
 // };
 
 export const molleModules = {
@@ -31,11 +33,25 @@ export const molleModules = {
     profile: BoxProfile,
     def: c("Box", "children")
   },
+  Headline: {
+    ref: Headline,
+    profile: HeadlineProfile,
+    def: c("Headline", "text", {
+      option: {
+        lv: "h3"
+      }
+    })
+  },
   Paragraph: {
     ref: Paragraph,
     profile: ParagraphProfile,
     def: c("Paragraph", "text")
   },
+  Card: {
+    ref: Card,
+    profile: CardProfile,
+    def: c("Card", "group")
+  }
 
   // Column: {
   //   ref: Column,
@@ -43,11 +59,11 @@ export const molleModules = {
   //   def: c("Box", "children")
   // },
   // ColumnBox: ColumnBox,
-  // Headline: Headline,
   // Picture: Picture,
-  // Card: Card,
   // ListCardItem: ListCardItem,
 };
+export type molleModules = typeof molleModules[keyof typeof molleModules];
+
 
 export const InitialValue = {
   Box: c("Box", "children"),

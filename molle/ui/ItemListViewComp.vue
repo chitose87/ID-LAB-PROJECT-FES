@@ -35,16 +35,16 @@
 
         switch (itemData.type) {
           case ValueType.children.val:
-            itemData.value.forEach((id: string) => {
+          case ValueType.group.val:
+            for (let key in itemData.value) {
+              let id: string = itemData.value[key];
               if (fsStore.items[id]) {
                 //もうある
               } else {
                 //まだない
                 this.getItem(id);
               }
-            });
-            break;
-          case ValueType.group.val:
+            }
             break;
           default:
             break;
