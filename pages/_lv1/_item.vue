@@ -6,7 +6,7 @@
 
 <script lang="ts">
   import {Component, Vue} from "~/node_modules/nuxt-property-decorator";
-  import PreView from "~/molle/PreView.vue";
+  import PreView from "~/molle/ui/PreView.vue";
 
   @Component({
     components: {PreView}

@@ -1,6 +1,6 @@
 import {Module, VuexModule, Mutation} from 'vuex-module-decorators'
 import {contentStore} from "~/utils/store-accessor";
-import {IValueStoreData} from "~/molle/interface/ValueProfile";
+import {IValueStoreData} from "~/molle/_tbd/ValueProfile";
 
 @Module({name: 'content', stateFactory: true, namespaced: true})
 

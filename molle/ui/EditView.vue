@@ -15,9 +15,6 @@
       //  v-if="children.main && children.main.ref"
       //  :itemId="children.main"
       //)
-    //ValueTreeComp(
-    //  :pageData="pageData"
-    //)
     style.
       [data-item-id="{{lsStore.storage.focusModuleId}}"] {
         outline: rgba(255, 0, 0, 0.6) 2px solid;
@@ -30,19 +27,18 @@
 <script lang="ts">
   import {Component, Prop, Vue, Watch} from "~/node_modules/nuxt-property-decorator";
   import firebase from "firebase";
-  import {molleModules, setMolleEditerModules} from "~/molle/editer/module";
+  import {molleModules, setMolleEditerModules} from "~/molle/module";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
   import {IPageStoreData} from "~/molle/interface/IPageStoreData";
   import {Singleton} from "~/molle/Singleton";
-  import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
-  import ValueTreeComp from "~/molle/ui/ValueTreeComp.vue";
+  import {FirestoreMgr} from "~/molle/FirestoreMgr";
   import {lsStore, fsStore} from "~/utils/store-accessor";
-  import ModulePropertyComp from "~/molle/ui/ModulePropertyComp.vue";
-  import {Module} from "~/molle/ssr/module/Module";
+  import ModulePropertyComp from "~/molle/ui/property/ModulePropertyComp.vue";
+  import {Module} from "~/molle/module/Module";
   import ItemListViewComp from "~/molle/ui/ItemListViewComp.vue";
 
   @Component({
-    components: {ItemListViewComp, ModulePropertyComp, ValueTreeComp}
+    components: {ItemListViewComp, ModulePropertyComp}
   })
   export default class EditView extends Vue {
     lsStore = lsStore;

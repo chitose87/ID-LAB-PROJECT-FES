@@ -60,8 +60,8 @@
   import {Component, Vue, Watch, Prop} from "~/node_modules/nuxt-property-decorator";
   import {fsStore, lsStore} from "~/utils/store-accessor";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
-  import {molleModules} from "~/molle/editer/module";
-  import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
+  import {molleModules} from "~/molle/module";
+  import {FirestoreMgr} from "~/molle/FirestoreMgr";
   import * as firebase from "~/node_modules/firebase";
 
   @Component({

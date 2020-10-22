@@ -7,12 +7,12 @@
 
 <script lang="ts">
   import {Component, Vue, Watch, Prop} from "~/node_modules/nuxt-property-decorator";
-  import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
+  import {FirestoreMgr} from "~/molle/FirestoreMgr";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
-  import {ValueType} from "~/molle/interface/ValueProfile";
+  import {ValueType} from "~/molle/_tbd/ValueProfile";
   import ItemListItemComp from "~/molle/ui/ItemListItemComp.vue";
   import {fsStore, lsStore} from "~/utils/store-accessor";
-  import {molleModules} from "~/molle/editer/module";
+  import {molleModules} from "~/molle/module";
 
   @Component({
     components: {ItemListItemComp}

@@ -1,0 +1,45 @@
+<template lang="pug">
+  div
+    StyleComp(
+      :itemData="itemData"
+      :onUpdate="onUpdate"
+      :permission="stylePermission"
+    )
+
+    label.mr-2 src:
+      input.form-control.form-control-sm(type="text" v-model="itemData.value.src" )
+    label.mr-2 sp:
+      input.form-control.form-control-sm(type="text" v-model="itemData.value.sp" )
+    label.mr-2 alt:
+      input.form-control.form-control-sm(type="text" v-model="itemData.value.alt" )
+
+    a.btn.btn-secondary.btn-sm(href="https://console.firebase.google.com/project/" + process.env.projectId + "/storage/" + process.env.storageBucket + "/files~2Fimages?hl=ja" target="_blank")
+      span Storage
+
+</template>
+
+<script lang="ts">
+  import {Component} from "~/node_modules/nuxt-property-decorator";
+  import ItemOptionSelect from "../../item-option/Select.vue";
+  import StyleComp from "~/molle/ui/property/StyleComp.vue";
+  import {Profile} from "~/molle/module/Profile";
+  import {StyleAlign} from "~/molle/_tba/StyleProfile";
+
+  @Component({
+    components: {StyleComp, ItemOptionSelect}
+  })
+  export default class PictureProfile extends Profile {
+    //style setting
+    stylePermission = {
+      border: false,
+      //align: StyleAlign.None,
+      margin: "",
+      // padding: "",
+      // theme: {default: "", select: ["", "test"]},
+      // color: {default: "", select: ["", "dark"]},
+    };
+  }
+</script>
+
+<style lang="scss">
+</style>
