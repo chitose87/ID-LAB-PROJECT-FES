@@ -1,55 +1,32 @@
 <template lang="pug">
-  .module-e(
-    v-if="itemData.moduleId"
-    :class="{editing:isEditing()}"
+  .module.picture(
+    v-if="itemData"
+    :id="itemData.tagId"
+    :class="getClass(itemData)"
+    :style="getStyle(itemData)"
+    :data-item-id="itemData.id"
   )
-    ModuleEditorComp(
-      :itemData="itemData"
-      :valueProfile="valueProfile"
-      :styleProfile="styleProfile")
-
-    picture(
-    )
-      source(v-if="getValue('sp')" media="(max-width:"+(process.env.breakPoint - 1)+"px)" :srcset="getValue('sp')" :alt="getValue('alt')")
+    picture
+      source(v-if="getValue('sp')"
+        media="(max-width:" + (process.env.breakPoint - 1) + "px)"
+        :srcset="getValue('sp')"
+        :alt="getValue('alt')")
       img(
         :src="getValue('src')" :alt="getValue('alt')"
         :class="getClass(itemData)"
-        @load="loaded()"
+        @load="loaded"
       )
 
 </template>
 
 <script lang="ts">
   import {Component} from "~/node_modules/nuxt-property-decorator";
-  import StyleComp from "~/molle/editer/ui/StyleComp.vue";
-  import {StyleAlign, StyleProfile} from "~/molle/interface/StyleProfile";
-  import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
-  import {ModuleE} from "~/molle/editer/module/ModuleE";
-  import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
-  import {InitialValue} from "~/molle/editer/module/index";
+  import {Module} from "~/molle/ssr/module/Module";
 
   @Component({
-    components: {ModuleEditorComp, StyleComp}
+    components: {}
   })
-  export default class PictureE extends ModuleE {
-
-    //value setting
-    valueProfile: ValueProfile = new ValueProfile({
-      types: [ValueType.picture]
-    });
-
-    //style setting
-    styleProfile: StyleProfile = new StyleProfile({
-      // border: false,
-      // align: StyleAlign.None,
-      // theme: {default: "", select: ["", "test"]},
-      // color: {default: "", select: ["", "dark"]},
-    });
-
-    created() {
-      this.init(InitialValue.Picture);
-    }
-
+  export default class Picture extends Module {
     //Unique Methods
     getValue(key: string) {
       return (this.itemData.value || {})[key]

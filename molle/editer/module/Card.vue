@@ -7,21 +7,24 @@
     :data-item-id="itemData.id"
   )
     div
-      //PictureE(
-      //  :itemId="getMemberItemId('img')"
-      //  :notDeleted="true"
-      //  :required="true"
-      //)
+      Picture(
+        :itemData="payload[itemData.value.img]"
+        :payload="payload"
+        :notDeleted="true"
+        :required="true"
+      )
 
       .left
-        //HeadlineE(
-        //  :itemId="getMemberItemId('title')"
-        //  :notDeleted="true"
-        //)
+        Headline(
+          :itemData="payload[itemData.value.title]"
+          :payload="payload"
+          :notDeleted="true"
+        )
 
         Paragraph(
           :itemData="payload[itemData.value.description]"
           :payload="payload"
+          :notDeleted="true"
         )
 
 </template>
@@ -29,16 +32,14 @@
 <script lang="ts">
   import {Component, Vue} from "~/node_modules/nuxt-property-decorator";
   import StyleComp from "~/molle/editer/ui/StyleComp.vue";
-  import {StyleAlign, StyleProfile} from "~/molle/interface/StyleProfile";
-  import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
   import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
-  import {InitialValue} from "~/molle/editer/module/index";
-  import {ModuleEGroup} from "~/molle/editer/module/ModuleEGroup";
   import {Module} from "~/molle/ssr/module/Module";
   import Paragraph from "~/molle/editer/module/Paragraph.vue";
+  import Headline from "~/molle/editer/module/Headline.vue";
+  import Picture from "~/molle/editer/module/Picture.vue";
 
   @Component({
-    components: {Paragraph, ModuleEditorComp, StyleComp}
+    components: {Picture, Headline, Paragraph, ModuleEditorComp, StyleComp}
   })
   export default class CardE extends Module {
     //value setting

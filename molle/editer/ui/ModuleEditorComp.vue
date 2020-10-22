@@ -1,115 +1,111 @@
 <template lang="pug">
-  .bootstrap.module-editor(
-    :status="$parent.isEditing()?'show':'hidden'"
-    :outerFocus="$parent.$data.outerFocus"
-    :notExport="data.notExport"
-    :title="itemData?itemData.moduleId+'/'+itemData.id:''"
-    @mouseover="focus(true)"
-    @mouseleave="focus(false)"
-  )
-    button.toggle.btn.btn-dark(
-      @click="lsStore.updateEditing({id:itemData.id})"
-    ) X
-    div.module-editor__body(v-if="$parent.isEditing()")
-      //b-icon.module-editor__arrow(icon="square-fill")
-
-      button.btn.module-editor__notExport(
-        v-if="!$parent.required"
-        @click="update2('notExport',!data.notExport)"
-      )
-        b-icon(icon="eye-slash-fill" v-if="data.notExport")
-        b-icon(icon="eye-fill" v-else)
-
-      div.form-inline.mb-1
-        //入れ替え
-        button.btn.btn-sm.btn-secondary.mr-2.module-editor__swap-btn(@click="$parent.indexSwap()")
-          b-icon(icon="arrow-down-up")
-
-        b(v-html="itemData.moduleId")
-
-        //名前
-        label.mr-2
-          .u_auto-input
-            span.u_auto-input__static.form-control.form-control-sm(v-html="data.name || 'name'")
-            input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="data.name" @change="update2('name')" placeholder="Name")
-
-        //ID
-        label.mr-2 id
-          .u_auto-input
-            span.u_auto-input__static.form-control.form-control-sm(v-html="data.tagId || 'id'")
-            input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="data.tagId" @change="update2('tagId')" placeholder="id")
-
-        //クラス
-        label.mr-2 class
-          .u_auto-input
-            span.u_auto-input__static.form-control.form-control-sm(v-html="data.tagClass || 'class'")
-            input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="data.tagClass" @change="update2('tagClass')" placeholder="class")
-
-        span.mr-1.text-white(v-html="itemData.id")
-
-        //削除
-        button.btn.btn-sm.btn-danger.mr-2(
-          v-if="!$parent.notDeleted"
-          @click="$parent.deleteModule()"
-        ) Delete
-
-        //移動
-        MoveComp.mr-2(
-          v-if="!$parent.notMove"
-          :itemData="itemData"
-        )
-
-        // todo visible 設定を足す
-      div.mb-1.form-inline
-        component.mr-3(v-for="item in itemOption"
-          :is="item.name"
-          :key="item.id"
-          :profile="item"
-          :option="data.option||{}"
-          @update="v=>update2('option',v)"
-        )
-
-      StyleComp.mb-1(:itemData="itemData" :styleProfile="styleProfile")
-
-      //value
-      //p Extends:
-        span(v-html="data.extends?data.extends.id:'継承なし'")
-        button(@click="openExtendsModal()") 変更
-        b-modal(v-model="extendsModal" centered="" title="Change Extends")
-          div(v-if="extendsModal")
-          .list-group-flush
-            button.list-group-item.list-group-item-action(@click="closeExtendsModal(null)")
-              span 継承なし
-            button.list-group-item.list-group-item-action(v-for="(item,key) in extendsList" @click="closeExtendsModal(item)")
-              span(v-html="item.value")
-              | /
-              span(v-html="item.name||`[ ${key} ]`")
-              //span(v-html="item.extends.")?
-
-        //p type {{data.type}}
-        //label type
-          select(v-model="data.type" )
-            option(v-for="(item,key) in valueTypes" :value="key" v-html="item.label")
-      form.w-100.form-group.m-0(@submit.prevent @change="update()")
-        div(v-if="data.type === 'text'")
-          div(v-if="data.superValue")
-            span superValue=
-            span(v-html="data.superValue")
-          textarea.form-control(v-model="data.value")
-
-        input(v-if="data.type === 'number'" type="number" v-model="data.value" )
-        textarea(v-if="data.type === 'html'" v-model="data.value" )
-
-        div.form-inline(v-if="data.type === 'picture'")
-          label.mr-2 src:
-            input.form-control.form-control-sm(type="text" v-model="data.value.src" )
-          label.mr-2 sp:
-            input.form-control.form-control-sm(type="text" v-model="data.value.sp" )
-          label.mr-2 alt:
-            input.form-control.form-control-sm(type="text" v-model="data.value.alt" )
-
-          a.btn.btn-secondary.btn-sm(href="https://console.firebase.google.com/project/" + process.env.projectId + "/storage/" + process.env.storageBucket + "/files~2Fimages?hl=ja" target="_blank")
-            span Storage
+  div
+  //.bootstrap.module-editor(
+  //  :status="$parent.isEditing()?'show':'hidden'"
+  //  :outerFocus="$parent.$data.outerFocus"
+  //  :notExport="data.notExport"
+  //  :title="itemData?itemData.moduleId+'/'+itemData.id:''"
+  //  @mouseover="focus(true)"
+  //  @mouseleave="focus(false)"
+  //)
+  //  button.toggle.btn.btn-dark(
+  //    @click="lsStore.updateEditing({id:itemData.id})"
+  //  ) X
+  //  div.module-editor__body(v-if="$parent.isEditing()")
+  //    //b-icon.module-editor__arrow(icon="square-fill")
+  //    button.btn.module-editor__notExport(
+  //      v-if="!$parent.required"
+  //      @click="update2('notExport',!data.notExport)"
+  //    )
+  //      b-icon(icon="eye-slash-fill" v-if="data.notExport")
+  //      b-icon(icon="eye-fill" v-else)
+  //    div.form-inline.mb-1
+  //      //入れ替え
+  //      button.btn.btn-sm.btn-secondary.mr-2.module-editor__swap-btn(@click="$parent.indexSwap()")
+  //        b-icon(icon="arrow-down-up")
+  //      b(v-html="itemData.moduleId")
+  //      //名前
+  //      label.mr-2
+  //        .u_auto-input
+  //          span.u_auto-input__static.form-control.form-control-sm(v-html="data.name || 'name'")
+  //          input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="data.name" @change="update2('name')" placeholder="Name")
+  //      //ID
+  //      label.mr-2 id
+  //        .u_auto-input
+  //          span.u_auto-input__static.form-control.form-control-sm(v-html="data.tagId || 'id'")
+  //          input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="data.tagId" @change="update2('tagId')" placeholder="id")
+  //
+    //      //クラス
+    //      label.mr-2 class
+    //        .u_auto-input
+    //          span.u_auto-input__static.form-control.form-control-sm(v-html="data.tagClass || 'class'")
+    //          input.u_auto-input__input.form-control.form-control-sm(type="text" v-model="data.tagClass" @change="update2('tagClass')" placeholder="class")
+  //
+    //      span.mr-1.text-white(v-html="itemData.id")
+  //
+    //      //削除
+    //      button.btn.btn-sm.btn-danger.mr-2(
+    //        v-if="!$parent.notDeleted"
+    //        @click="$parent.deleteModule()"
+    //      ) Delete
+  //
+    //      //移動
+    //      MoveComp.mr-2(
+    //        v-if="!$parent.notMove"
+    //        :itemData="itemData"
+    //      )
+  //
+    //      // todo visible 設定を足す
+    //    div.mb-1.form-inline
+    //      component.mr-3(v-for="item in itemOption"
+    //        :is="item.name"
+    //        :key="item.id"
+    //        :profile="item"
+    //        :option="data.option||{}"
+    //        @update="v=>update2('option',v)"
+    //      )
+  //
+    //    StyleComp.mb-1(:itemData="itemData" :styleProfile="styleProfile")
+  //
+    //    //value
+    //    //p Extends:
+    //      span(v-html="data.extends?data.extends.id:'継承なし'")
+    //      button(@click="openExtendsModal()") 変更
+    //      b-modal(v-model="extendsModal" centered="" title="Change Extends")
+    //        div(v-if="extendsModal")
+    //        .list-group-flush
+    //          button.list-group-item.list-group-item-action(@click="closeExtendsModal(null)")
+    //            span 継承なし
+    //          button.list-group-item.list-group-item-action(v-for="(item,key) in extendsList" @click="closeExtendsModal(item)")
+    //            span(v-html="item.value")
+    //            | /
+    //            span(v-html="item.name||`[ ${key} ]`")
+    //            //span(v-html="item.extends.")?
+  //
+    //      //p type {{data.type}}
+    //      //label type
+    //        select(v-model="data.type" )
+    //          option(v-for="(item,key) in valueTypes" :value="key" v-html="item.label")
+    //    form.w-100.form-group.m-0(@submit.prevent @change="update()")
+    //      div(v-if="data.type === 'text'")
+    //        div(v-if="data.superValue")
+    //          span superValue=
+    //          span(v-html="data.superValue")
+    //        textarea.form-control(v-model="data.value")
+  //
+    //      input(v-if="data.type === 'number'" type="number" v-model="data.value" )
+    //      textarea(v-if="data.type === 'html'" v-model="data.value" )
+  //
+    //      div.form-inline(v-if="data.type === 'picture'")
+    //        label.mr-2 src:
+    //          input.form-control.form-control-sm(type="text" v-model="data.value.src" )
+    //        label.mr-2 sp:
+    //          input.form-control.form-control-sm(type="text" v-model="data.value.sp" )
+    //        label.mr-2 alt:
+    //          input.form-control.form-control-sm(type="text" v-model="data.value.alt" )
+  //
+    //        a.btn.btn-secondary.btn-sm(href="https://console.firebase.google.com/project/" + process.env.projectId + "/storage/" + process.env.storageBucket + "/files~2Fimages?hl=ja" target="_blank")
+    //          span Storage
 
 
 </template>
@@ -194,7 +190,7 @@
     update() {
       let update: any = {
         name: this.data.name || "",
-        type: this.data.type,
+        // type: this.data.type,
         // updateTime: firebase.firestore.FieldValue.serverTimestamp()
       };
       if (this.data.value) update.value = this.data.value;

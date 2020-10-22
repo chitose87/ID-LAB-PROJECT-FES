@@ -1,14 +1,14 @@
 import firebase from "~/node_modules/firebase";
 import {ModuleE} from "~/molle/editer/module/ModuleE";
 import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
-import {InitialValue} from "~/molle/editer/module/index";
+// import {InitialValue} from "~/molle/editer/module/index";
 import {IItemStoreData} from "~/molle/interface/ItemProfile";
 import {lsStore} from "~/utils/store-accessor";
 
 export class ModuleEContainer extends ModuleE {
   children = <{ id: string, moduleId: string }[]>[];
 
-  init(initialValue: InitialValue, onUpdate?: () => void) {
+  init(initialValue: any, onUpdate?: () => void) {
     // super.init(initialValue, () => {
     //   this.children.length = 0;
     //   for (let i in this.itemData!.value) {

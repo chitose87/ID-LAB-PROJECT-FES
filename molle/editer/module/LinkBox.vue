@@ -37,7 +37,7 @@
   import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
   import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
   import {ModuleEContainer} from "~/molle/editer/module/ModuleEContainer";
-  import {InitialValue} from "~/molle/editer/module/index";
+  // import {InitialValue} from "~/molle/editer/module/index";
   import AddModule from "~/molle/editer/ui/AddModule.vue";
 
   @Component({
@@ -59,7 +59,7 @@
     });
 
     created() {
-      this.init(InitialValue.Box);
+      // this.init(InitialValue.Box);
     }
 
   }

@@ -9,7 +9,7 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from "~/node_modules/nuxt-property-decorator";
-  import {InitialValue} from "~/molle/editer/module";
+  // import {InitialValue} from "~/molle/editer/module";
   import {molleModules} from "~/molle/ssr/module";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
 
@@ -21,14 +21,14 @@
   export default class AddModule extends Vue {
     molleModules = molleModules;
 
-    pushModuleSelected = InitialValue.Paragraph.moduleId;
+    // pushModuleSelected = molleModules.ColumnBox
 
     pushModule() {
       // @ts-ignore
-      let data: IItemStoreData = InitialValue[this.pushModuleSelected]
-        || InitialValue.Group(this.pushModuleSelected);
-
-      this.$emit("submit", data);
+      // let data: IItemStoreData = InitialValue[this.pushModuleSelected]
+      //   || InitialValue.Group(this.pushModuleSelected);
+      //
+      // this.$emit("submit", data);
       // this.submit!(data);
     }
   }

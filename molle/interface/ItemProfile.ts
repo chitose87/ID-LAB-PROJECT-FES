@@ -19,7 +19,7 @@ export interface IItemStoreData {
   updateTime: firebase.firestore.Timestamp;
 
   //value
-  type?: string;
+  // type?: string;
 
   value?: any;
   // extends?: firebase.firestore.DocumentReference;

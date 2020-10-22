@@ -1,6 +1,7 @@
 <template lang="pug">
   .bootstrap.space-form-comp.d-inline-block
-    label {{label}}
+    label
+      span.mr-1 {{label}}:
       div
         .u_auto-input.d-inline-block(v-if="valueSelected==='number'")
           span.u_auto-input__static.form-control.form-control-sm.pr-4(v-html="valueNumber || '0'")

@@ -3,7 +3,7 @@ import {ValueProfile} from "~/molle/interface/ValueProfile";
 import {StyleProfile} from "~/molle/interface/StyleProfile";
 import {Module} from "~/molle/ssr/module/Module";
 import {Singleton} from "~/molle/Singleton";
-import {InitialValue} from "~/molle/editer/module/index";
+// import {InitialValue} from "~/molle/editer/module/index";
 import * as firebase from "~/node_modules/firebase";
 import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
 import {lsStore} from "~/utils/store-accessor";
@@ -33,7 +33,7 @@ export class ModuleE extends Module {
     return lsStore.editing.indexOf(this.itemId!) >= 0;
   }
 
-  init(initialValue: InitialValue, onUpdate?: () => void) {
+  init(initialValue: any, onUpdate?: () => void) {
     if (!this.valueProfile) {
       throw new Error("valueProfileの設定が必要です");
     }

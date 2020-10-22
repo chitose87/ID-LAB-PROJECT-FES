@@ -13,6 +13,9 @@ import BoxProfile from "~/molle/editer/module/BoxProfile.vue";
 import ParagraphProfile from "~/molle/editer/module/ParagraphProfile.vue";
 import CardProfile from "~/molle/editer/module/CardProfile.vue";
 import HeadlineProfile from "~/molle/editer/module/HeadlineProfile.vue";
+import PictureProfile from "~/molle/editer/module/PictureProfile.vue";
+import ColumnProfile from "~/molle/editer/module/ColumnProfile.vue";
+import ColumnBoxProfile from "~/molle/editer/module/ColumnBoxProfile.vue";
 // import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
 // import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
@@ -31,7 +34,8 @@ export const molleModules = {
   Box: {
     ref: Box,
     profile: BoxProfile,
-    def: c("Box", "children")
+    def: c("Box", "children"),
+    black: [ColumnBox]
   },
   Headline: {
     ref: Headline,
@@ -47,42 +51,53 @@ export const molleModules = {
     profile: ParagraphProfile,
     def: c("Paragraph", "text")
   },
+  Picture: {
+    ref: Picture,
+    profile: PictureProfile,
+    def: c("Picture", "picture")
+  },
+
   Card: {
     ref: Card,
     profile: CardProfile,
     def: c("Card", "group")
-  }
+  },
 
-  // Column: {
-  //   ref: Column,
-  //   // profile: BoxProfile,
-  //   def: c("Box", "children")
-  // },
-  // ColumnBox: ColumnBox,
-  // Picture: Picture,
+  Column: {
+    ref: Column,
+    profile: ColumnProfile,
+    def: c("Column", "children"),
+    white: [ColumnBox]
+  },
+  ColumnBox: {
+    ref: ColumnBox,
+    profile: ColumnBoxProfile,
+    def: c("ColumnBox", "children"),
+    black: [ColumnBox]
+  }
   // ListCardItem: ListCardItem,
 };
 export type molleModules = typeof molleModules[keyof typeof molleModules];
 
 
-export const InitialValue = {
-  Box: c("Box", "children"),
-
-  Column: c("Column", "children"),
-  ColumnBox: c("Box", "children"),
-
-  Headline: c("Headline", "text", {
-    option: {
-      lv: "h3"
-    }
-  }),
-  Paragraph: c("Paragraph", "text"),
-  Buttons: c("Buttons", "buttons"),
-  Picture: c("Picture", "picture"),
-
-  Group: (moduleId: string) => c(moduleId, "group"),
-} as const;
-export type InitialValue = typeof InitialValue[keyof typeof InitialValue];
+// export const InitialValue = {
+//   Box: c("Box", "children"),
+//
+//   Column: c("Column", "children"),
+//   ColumnBox: c("ColumnBox", "children"),
+//
+//   Headline: c("Headline", "text", {
+//     option: {
+//       lv: "h3"
+//     }
+//   }),
+//   Paragraph: c("Paragraph", "text"),
+//   Buttons: c("Buttons", "buttons"),
+//   Picture: c("Picture", "picture"),
+//
+//   Group: (moduleId: string) => c(moduleId, "group"),
+// } as const;
+// export type InitialValue = typeof InitialValue[keyof typeof InitialValue];
 
 export function setMolleEditerModules() {
   //modules
@@ -118,6 +133,9 @@ function c(moduleId: string, type: string, opt?: any) {
     case "children":
       v.value = [];
       break;
+    // case "items":
+    //   v.value = [];
+    //   break;
     case "group":
       v.value = {};
       break;

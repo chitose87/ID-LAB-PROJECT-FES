@@ -6,6 +6,16 @@
       :permission="stylePermission"
     )
 
+    label.mr-2 src:
+      input.form-control.form-control-sm(type="text" v-model="itemData.value.src" )
+    label.mr-2 sp:
+      input.form-control.form-control-sm(type="text" v-model="itemData.value.sp" )
+    label.mr-2 alt:
+      input.form-control.form-control-sm(type="text" v-model="itemData.value.alt" )
+
+    a.btn.btn-secondary.btn-sm(href="https://console.firebase.google.com/project/" + process.env.projectId + "/storage/" + process.env.storageBucket + "/files~2Fimages?hl=ja" target="_blank")
+      span Storage
+
 </template>
 
 <script lang="ts">
@@ -14,29 +24,20 @@
   import StyleComp from "~/molle/editer/ui/StyleComp.vue";
   import {Profile} from "~/molle/editer/module/Profile";
   import {StyleAlign} from "~/molle/interface/StyleProfile";
-  import {molleModules} from "~/molle/editer/module/index";
 
   @Component({
     components: {StyleComp, ItemOptionSelect}
   })
-  export default class CardProfile extends Profile {
+  export default class PictureProfile extends Profile {
     //style setting
     stylePermission = {
       border: false,
-      align: StyleAlign.None,
+      //align: StyleAlign.None,
       margin: "",
       // padding: "",
       // theme: {default: "", select: ["", "test"]},
       // color: {default: "", select: ["", "dark"]},
     };
-
-    beforeMount() {
-      this.checkChild({
-        img: molleModules.Picture.def,
-        title: molleModules.Headline.def,
-        description: molleModules.Paragraph.def
-      })
-    }
   }
 </script>
 

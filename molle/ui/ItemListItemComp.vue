@@ -16,7 +16,8 @@
         @click="deleteModule()"
       ) x
 
-    .list-group.mt-3(v-if="itemData.type === 'children'")
+    // children
+    .list-group.mt-3(v-if="molleModules[itemData.moduleId].def.type==='children'")
       ItemListItemComp(
         v-for="id in itemData.value"
         :key="id"
@@ -26,10 +27,24 @@
       .list-group-item.pr-0.border-right-0
         form.form-group.d-flex.justify-content-between.mb-0.mr-2(@submit.prevent @submit="pushModule()")
           select.form-control.form-control-sm(v-model="pushModuleSelected")
-            option(v-for="(item,key) in molleModules" :value="key" v-html="key")
+            option(v-for="key in getModuleList()" :value="key" v-html="key")
           button.btn.btn-sm.btn-info(type="submit") +
 
-    .list-group.mt-3(v-if="itemData.type === 'group'")
+    // items
+    //.list-group.mt-3(v-if="molleModules[itemData.moduleId].def.type==='items'")
+    //  ItemListItemComp(
+    //    v-for="id in itemData.value"
+    //    :key="id"
+    //    :itemId="id"
+    //    :dic="dic"
+    //  )
+    //  .list-group-item.pr-0.border-right-0
+    //    form.form-group.d-flex.justify-content-between.mb-0.mr-2(@submit.prevent @submit="pushModule()")
+    //      span Add Item
+    //      button.btn.btn-sm.btn-info(type="submit") +
+
+    // group
+    .list-group.mt-3(v-if="molleModules[itemData.moduleId].def.type==='group'")
       ItemListItemComp(
         v-for="id in itemData.value"
         :key="id"
@@ -45,7 +60,7 @@
   import {Component, Vue, Watch, Prop} from "~/node_modules/nuxt-property-decorator";
   import {fsStore, lsStore} from "~/utils/store-accessor";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
-  import {InitialValue, molleModules} from "~/molle/editer/module";
+  import {molleModules} from "~/molle/editer/module";
   import {FirestoreMgr} from "~/molle/editer/FirestoreMgr";
   import * as firebase from "~/node_modules/firebase";
 
@@ -57,21 +72,43 @@
     @Prop() dic?: any;
     itemData?: IItemStoreData;
     lsStore = lsStore;
-    pushModuleSelected = InitialValue.Paragraph.moduleId;
     molleModules = molleModules;
+    pushModuleSelected: string = "";
 
     getItem() {
       this.itemData = fsStore.items[this.itemId!];
+      if (!this.pushModuleSelected && this.itemData) {
+        this.pushModuleSelected = this.getModuleList()[0];
+      }
       return this.itemData;
     }
 
     mounted() {
     }
 
+    getModuleList() {
+      let moduleList: string[] = [];
+      // @ts-ignore
+      let moduleOpt = molleModules[this.itemData.moduleId];
+      if (moduleOpt.white) {
+        for (let item of moduleOpt.white) {
+          moduleList.push(item.options.name);
+        }
+      } else {
+        moduleList = Object.keys(molleModules);
+        if (moduleOpt.black) {
+          moduleOpt.black.forEach((item: any) => {
+            let i = moduleList.indexOf(item.options.name);
+            moduleList.splice(i, 1);
+          })
+        }
+      }
+      return moduleList;
+    }
+
     pushModule() {
       // @ts-ignore
-      let data: IItemStoreData = InitialValue[this.pushModuleSelected]
-        || InitialValue.Group(this.pushModuleSelected);
+      let data: IItemStoreData = molleModules[this.pushModuleSelected].def;
 
       let id = FirestoreMgr.itemsRef.doc().id;
 

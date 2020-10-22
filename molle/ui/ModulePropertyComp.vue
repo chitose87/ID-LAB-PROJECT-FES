@@ -2,6 +2,7 @@
   .module-property-comp.bootstrap
     p(v-html="getFocusModuleId()")
     div(v-if="itemData")
+      p(v-html="itemData.moduleId")
       button.btn.module-editor__notExport(
         v-if="!$parent.required"
         @click="update('notExport',!itemData.notExport)"
@@ -64,7 +65,7 @@
     molleModules = molleModules;
 
     getFocusModuleId() {
-      this.itemData=fsStore.items[lsStore.storage.focusModuleId];
+      this.itemData = fsStore.items[lsStore.storage.focusModuleId];
       return lsStore.storage.focusModuleId;
     }
 
@@ -88,6 +89,12 @@
   .module-property-comp {
     background-color: $color-gray-100;
 
-    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    height: 100vh;
+    overflow: auto;
+
+    position: sticky;
+    top: 0;
   }
 </style>

@@ -23,7 +23,7 @@
   import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
   import {ModuleE} from "~/molle/editer/module/ModuleE";
   import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
-  import {InitialValue} from "~/molle/editer/module/index";
+  // import {InitialValue} from "~/molle/editer/module/index";
 
   @Component({
     components: {ModuleEditorComp, StyleComp}

@@ -12,6 +12,7 @@
   import {ValueType} from "~/molle/interface/ValueProfile";
   import ItemListItemComp from "~/molle/ui/ItemListItemComp.vue";
   import {fsStore, lsStore} from "~/utils/store-accessor";
+  import {molleModules} from "~/molle/editer/module";
 
   @Component({
     components: {ItemListItemComp}
@@ -33,9 +34,11 @@
         itemData.id = snap.id;
         fsStore.updateItem({id: snap.id, itemData: itemData});
 
-        switch (itemData.type) {
+        //@ts-ignore
+        switch (molleModules[itemData.moduleId]!.def.type) {
           case ValueType.children.val:
           case ValueType.group.val:
+          case ValueType.items.val:
             for (let key in itemData.value) {
               let id: string = itemData.value[key];
               if (fsStore.items[id]) {
@@ -61,12 +64,11 @@
 <style lang="scss">
   .item-list-view-comp.bootstrap {
     background-color: $color-gray-100;
-    width: 200px;
+    min-width: 300px;
+    height: 100vh;
+    overflow: auto;
 
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 0;*/
-
-    //z-index: $zindex-fixed;
+    position: sticky;
+    top: 0;
   }
 </style>

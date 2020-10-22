@@ -1,5 +1,12 @@
 <template lang="pug">
   div
+    ItemOptionInput(
+      :label="'カラムサイズ'",
+      :data="itemData.option || {}"
+      :dataKey="'flex-basis'"
+      @change="(v)=>onUpdate('option',v)"
+    )
+
     StyleComp(
       :itemData="itemData"
       :onUpdate="onUpdate"
@@ -10,33 +17,23 @@
 
 <script lang="ts">
   import {Component} from "~/node_modules/nuxt-property-decorator";
-  import ItemOptionSelect from "./item-option/Select.vue";
   import StyleComp from "~/molle/editer/ui/StyleComp.vue";
   import {Profile} from "~/molle/editer/module/Profile";
-  import {StyleAlign} from "~/molle/interface/StyleProfile";
-  import {molleModules} from "~/molle/editer/module/index";
+  import ItemOptionInput from "~/molle/editer/module/item-option/Input.vue";
 
   @Component({
-    components: {StyleComp, ItemOptionSelect}
+    components: {StyleComp, ItemOptionInput}
   })
-  export default class CardProfile extends Profile {
+  export default class ColumnBoxProfile extends Profile {
     //style setting
     stylePermission = {
+      container: false,
       border: false,
-      align: StyleAlign.None,
       margin: "",
-      // padding: "",
+      padding: "",
       // theme: {default: "", select: ["", "test"]},
       // color: {default: "", select: ["", "dark"]},
     };
-
-    beforeMount() {
-      this.checkChild({
-        img: molleModules.Picture.def,
-        title: molleModules.Headline.def,
-        description: molleModules.Paragraph.def
-      })
-    }
   }
 </script>
 

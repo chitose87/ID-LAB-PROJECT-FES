@@ -26,7 +26,7 @@
   import {StyleAlign, StyleProfile} from "~/molle/interface/StyleProfile";
   import {ValueProfile, ValueType} from "~/molle/interface/ValueProfile";
   import ModuleEditorComp from "~/molle/editer/ui/ModuleEditorComp.vue";
-  import {InitialValue} from "~/molle/editer/module/index";
+  // import {InitialValue} from "~/molle/editer/module/index";
   import {ModuleEGroup} from "~/molle/editer/module/ModuleEGroup";
 
   @Component({
@@ -47,7 +47,7 @@
     });
 
     created() {
-      this.init(InitialValue.Group("Card"));
+      // this.init(InitialValue.Group("Card"));
     }
 
     //Unique Methods

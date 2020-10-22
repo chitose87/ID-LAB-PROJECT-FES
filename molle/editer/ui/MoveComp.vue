@@ -96,25 +96,25 @@
     }
 
     submit() {
-      FirestoreMgr.itemsRef.doc(this.toId).get()
-        .then((snap: firebase.firestore.DocumentSnapshot) => {
-          if (!snap.exists) {
-            return;
-          }
-
-          let data = <IItemStoreData>snap.data();
-          if (data.type != ValueType.children.val) {
-            return;
-          }
-          //copy
-          let value = data.value || [];
-          value.push(this.itemData!.id);
-
-          FirestoreMgr.itemUpdate(this.toId, {value: value});
-
-          //delete
-          this.parentContainer!.deleteChild(this.itemData!.id)
-        });
+    //   FirestoreMgr.itemsRef.doc(this.toId).get()
+    //     .then((snap: firebase.firestore.DocumentSnapshot) => {
+    //       if (!snap.exists) {
+    //         return;
+    //       }
+    //
+    //       let data = <IItemStoreData>snap.data();
+    //       if (data.type != ValueType.children.val) {
+    //         return;
+    //       }
+    //       //copy
+    //       let value = data.value || [];
+    //       value.push(this.itemData!.id);
+    //
+    //       FirestoreMgr.itemUpdate(this.toId, {value: value});
+    //
+    //       //delete
+    //       this.parentContainer!.deleteChild(this.itemData!.id)
+    //     });
     }
   }
 </script>

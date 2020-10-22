@@ -30,7 +30,7 @@
 <script lang="ts">
   import {Component, Prop, Vue, Watch} from "~/node_modules/nuxt-property-decorator";
   import firebase from "firebase";
-  import {InitialValue, setMolleEditerModules} from "~/molle/editer/module";
+  import {molleModules, setMolleEditerModules} from "~/molle/editer/module";
   import {IItemStoreData} from "~/molle/interface/ItemProfile";
   import {IPageStoreData} from "~/molle/interface/IPageStoreData";
   import {Singleton} from "~/molle/Singleton";
@@ -76,7 +76,7 @@
       if (!this.pageData!.main) {
         // ルートコンテツエリアが未設定
         firebase.firestore().collection(`items`)
-          .add(InitialValue.Box)
+          .add(molleModules.Box.def)
           .then((e) => {
             this.pageData!.ref.update({
               main: e.id
