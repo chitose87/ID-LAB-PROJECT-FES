@@ -96,7 +96,7 @@
 
 <script lang="ts">
   import {Component, Vue} from "~/node_modules/nuxt-property-decorator";
-  import Button from "~/molle/item-option/Button.vue";
+  import Button from "~/molle/_tba/ButtonFormComp.vue";
   import NewReports from "~/components/NewReports.vue";
 
   @Component({

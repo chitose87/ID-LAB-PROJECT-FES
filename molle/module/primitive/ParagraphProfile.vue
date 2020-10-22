@@ -10,13 +10,12 @@
 
 <script lang="ts">
   import {Component} from "~/node_modules/nuxt-property-decorator";
-  import ItemOptionSelect from "../../item-option/Select.vue";
   import StyleComp from "~/molle/ui/property/StyleComp.vue";
   import {Profile} from "~/molle/module/Profile";
   import {StyleAlign} from "~/molle/_tba/StyleProfile";
 
   @Component({
-    components: {StyleComp, ItemOptionSelect}
+    components: {StyleComp}
   })
   export default class ParagraphProfile extends Profile {
     //style setting

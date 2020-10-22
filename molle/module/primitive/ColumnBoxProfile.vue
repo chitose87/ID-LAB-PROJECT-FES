@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    ItemOptionInput(
+    SpaceOptionComp(
       :label="'カラムサイズ'",
       :data="itemData.option || {}"
       :dataKey="'flex-basis'"
@@ -19,10 +19,10 @@
   import {Component} from "~/node_modules/nuxt-property-decorator";
   import StyleComp from "~/molle/ui/property/StyleComp.vue";
   import {Profile} from "~/molle/module/Profile";
-  import ItemOptionInput from "~/molle/item-option/Input.vue";
+  import SpaceOptionComp from "~/molle/ui/property/InputOptionComp.vue";
 
   @Component({
-    components: {StyleComp, ItemOptionInput}
+    components: {StyleComp, SpaceOptionComp}
   })
   export default class ColumnBoxProfile extends Profile {
     //style setting

@@ -1,19 +1,19 @@
 <template lang="pug">
   div
-    ItemOptionInput(
+    InputOptionComp(
       :label="'基本カラムサイズ'",
       :data="itemData.option || {}"
       :dataKey="'flex-basis'"
       @change="(v)=>onUpdate('option',v)"
     )
-    ItemOptionSpace(
+    SpaceOptionComp(
       :label="'横の隙間'",
       :data="itemData.option || {}"
       :dataKey="'gutter-h'"
       :negative="false"
       @change="(v)=>onUpdate('option',v)"
     )
-    ItemOptionSpace(
+    SpaceOptionComp(
       :label="'縦の隙間'",
       :data="itemData.option || {}"
       :dataKey="'gutter-v'"
@@ -32,11 +32,11 @@
   import {Component} from "~/node_modules/nuxt-property-decorator";
   import StyleComp from "~/molle/ui/property/StyleComp.vue";
   import {Profile} from "~/molle/module/Profile";
-  import ItemOptionInput from "~/molle/item-option/Input.vue";
-  import ItemOptionSpace from "~/molle/item-option/Space.vue";
+  import InputOptionComp from "~/molle/ui/property/InputOptionComp.vue";
+  import SpaceOptionComp from "~/molle/ui/property/SpaceOptionComp.vue";
 
   @Component({
-    components: {StyleComp, ItemOptionInput, ItemOptionSpace}
+    components: {SpaceOptionComp, InputOptionComp, StyleComp, }
   })
   export default class ColumnProfile extends Profile {
     //style setting

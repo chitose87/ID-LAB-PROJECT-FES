@@ -13,7 +13,7 @@
   })
   /**
    */
-  export default class ItemOptionButton extends Vue {
+  export default class ButtonFormComp extends Vue {
     @Prop() profile?: ItemOptionButtonProfile;
   }
 

@@ -1,12 +1,11 @@
 <template lang="pug">
-  .item-option-input
+  .item-option-select
     label.form-inline
       span.mr-1 {{label}}:
-      input.form-control.form-control-sm(
-        type="text"
+      select.form-control.form-control-sm(
         :value="data[dataKey]"
-        @change="update($event.target.value)"
-      )
+        @change="update($event.target.value)")
+        option(v-for="item in select" :value="item" v-html="item")
 
 </template>
 
@@ -18,8 +17,9 @@
   })
   /**
    */
-  export default class ItemOptionInput extends Vue {
+  export default class SelectOptionComp extends Vue {
     @Prop() label?: string;
+    @Prop() select?: string[];
     @Prop() data?: any;
     @Prop() dataKey?: string;
 
