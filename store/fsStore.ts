@@ -11,4 +11,9 @@ export default class fsStore extends VuexModule {
   updateItem(arg: { id: string, itemData: IItemStoreData }) {
     Vue.set(this.items, arg.id, arg.itemData);
   }
+
+  @Mutation
+  updateItemValue(arg: { id: string, value: any }) {
+    Vue.set(this.items[arg.id], "value", arg.value);
+  }
 }

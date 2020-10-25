@@ -18,6 +18,8 @@ import Card from "~/molle/module/group/Card.vue";
 import CardProfile from "~/molle/module/group/CardProfile.vue";
 
 import ListCardItem from "~/molle/_tba/ListCardItem.vue";
+import {Profile} from "~/molle/module/Profile";
+import {IItemStoreData} from "~/molle/interface/ItemProfile";
 // import SectionHeadE from "~/molle/editer/module/SectionHeadE.vue";
 // import ButtonsE from "~/molle/editer/module/ButtonsE.vue";
 // import GrobalHeaderE from "~/molle/editer/module/GrobalHeaderE.vue";
@@ -32,7 +34,15 @@ import ListCardItem from "~/molle/_tba/ListCardItem.vue";
 // SectionMvE: SectionMvE,
 // };
 
-export const molleModules = {
+export const molleModules: {
+  [key: string]: {
+    ref: any,
+    profile: any,
+    def: any,
+    black?: [any],
+    white?: [any],
+  }
+} = {
   Box: {
     ref: Box,
     profile: BoxProfile,

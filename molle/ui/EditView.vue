@@ -10,6 +10,7 @@
         :itemData="fsStore.items[pageData.main]"
         :payload="fsStore.items"
       )
+      TextFieldComp
     ModulePropertyComp
       //BoxE(
       //  v-if="children.main && children.main.ref"
@@ -33,12 +34,13 @@
   import {Singleton} from "~/molle/Singleton";
   import {FirestoreMgr} from "~/molle/FirestoreMgr";
   import {lsStore, fsStore} from "~/utils/store-accessor";
-  import ModulePropertyComp from "~/molle/ui/property/ModulePropertyComp.vue";
+  import ModulePropertyComp from "~/molle/ui/ModulePropertyComp.vue";
   import {Module} from "~/molle/module/Module";
   import ItemListViewComp from "~/molle/ui/ItemListViewComp.vue";
+  import TextFieldComp from "~/molle/ui/TextFieldComp.vue";
 
   @Component({
-    components: {ItemListViewComp, ModulePropertyComp}
+    components: {TextFieldComp, ItemListViewComp, ModulePropertyComp}
   })
   export default class EditView extends Vue {
     lsStore = lsStore;
