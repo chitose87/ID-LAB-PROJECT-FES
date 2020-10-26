@@ -33,6 +33,7 @@
 
 <style lang="scss">
   .box {
-
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
 </style>

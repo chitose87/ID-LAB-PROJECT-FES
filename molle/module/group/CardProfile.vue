@@ -25,8 +25,8 @@
       align: StyleAlign.None,
       margin: "",
       // padding: "",
-      // theme: {default: "", select: ["", "test"]},
-      // color: {default: "", select: ["", "dark"]},
+      theme: {default: "", select: ["", "t-img-top", "t-col"]},
+      color: {default: "", select: ["", "dark"]},
     };
 
     beforeMount() {

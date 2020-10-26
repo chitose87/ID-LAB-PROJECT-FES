@@ -6,7 +6,20 @@
     :style="getStyle(itemData)"
     :data-item-id="itemData.id"
   )
-    div
+    .card__body
+      .card__title
+        Headline(
+          :itemData="payload[itemData.value.title]"
+          :payload="payload"
+          :notDeleted="true"
+        )
+      .card__description
+        Paragraph(
+          :itemData="payload[itemData.value.description]"
+          :payload="payload"
+          :notDeleted="true"
+        )
+    .card__img
       Picture(
         :itemData="payload[itemData.value.img]"
         :payload="payload"
@@ -14,18 +27,6 @@
         :required="true"
       )
 
-      .left
-        Headline(
-          :itemData="payload[itemData.value.title]"
-          :payload="payload"
-          :notDeleted="true"
-        )
-
-        Paragraph(
-          :itemData="payload[itemData.value.description]"
-          :payload="payload"
-          :notDeleted="true"
-        )
 
 </template>
 
@@ -42,23 +43,6 @@
     components: {Picture, Headline, Paragraph, ModuleEditorComp, StyleComp}
   })
   export default class CardE extends Module {
-    //value setting
-    // valueProfile: ValueProfile = new ValueProfile({
-    //   types: [ValueType.group]
-    // });
-    //
-    // //style setting
-    // styleProfile: StyleProfile = new StyleProfile({
-    //   border: false,
-    //   align: StyleAlign.None,
-    //   theme: {default: "", select: ["", "test"]},
-    //   color: {default: "", select: ["", "dark"]},
-    // });
-    //
-    // created() {
-    //   this.init(InitialValue.Group("Card"));
-    // }
-
     //Unique Methods
   }
 </script>
@@ -66,5 +50,99 @@
 <style lang="scss">
   .card {
     box-shadow: $shadow;
+    padding: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    &__title {
+
+    }
+
+    &__description {
+
+    }
+
+    &__img {
+
+    }
+
+    //theme
+    &.t-img-top {
+      display: flex;
+      flex-direction: column;
+
+      .card {
+        &__body {
+          order: 1;
+
+        }
+
+        &__title {
+          .headline {
+            margin-top: 1.5rem;
+          }
+        }
+
+        &__description {
+        }
+
+        &__img {
+          order: 0;
+
+
+        }
+      }
+    }
+
+    &.t-col {
+      display: flex;
+
+      .card {
+        &__body {
+          order: 1;
+          flex: 1;
+        }
+
+        &__title {
+          .headline {
+            margin-top: 0;
+          }
+        }
+
+        &__description {
+        }
+
+        &__img {
+          order: 0;
+          flex-shrink: 0;
+          flex-grow: 0;
+          flex-basis: 280px;
+          margin-right: 2rem;
+
+          .module {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    //color
+    &.dark {
+      background-color: $color-gray-900;
+      color: $color-text-white;
+
+      &__title {
+
+      }
+
+      &__description {
+
+      }
+
+      &__img {
+
+      }
+
+    }
   }
 </style>

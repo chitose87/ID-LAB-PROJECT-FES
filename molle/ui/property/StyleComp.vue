@@ -4,13 +4,13 @@
       label
         span.mr-1 Theme:
         select.form-control.form-control-sm(v-model="dataClass.theme" @change="onUpdate('class',dataClass)")
-          //option(v-for="theme in styleProfile.themeCollection" :val="theme" v-html="theme")
+          option(v-for="theme in permission.theme.select" :val="theme" v-html="theme")
 
     span.mr-3(v-if="permission.color!==undefined")
       label
         span.mr-1 Color:
         select.form-control.form-control-sm(v-model="dataClass.color" @change="onUpdate('class',dataClass)")
-          //option(v-for="color in styleProfile.colorCollection" :val="color" v-html="color")
+          option(v-for="color in permission.color.select" :val="color" v-html="color")
 
     //container
     span.mr-3(v-if="permission.container!==undefined")

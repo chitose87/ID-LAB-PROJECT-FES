@@ -2,7 +2,13 @@
   .module-property-comp.bootstrap
     p(v-html="getFocusModuleId()")
     div(v-if="itemData")
-      p(v-html="itemData.moduleId")
+      p
+        span.mr-2(v-html="itemData.moduleId")
+        button.btn.btn-sm.btn-outline-secondary(
+          @click="moduleChange()"
+        )
+          b-icon(icon="pencil")
+
       button.btn.module-editor__notExport(
         v-if="!$parent.required"
         @click="update('notExport',!itemData.notExport)"
@@ -46,6 +52,10 @@
         :itemData="itemData"
         :onUpdate="update"
       )
+
+      // style
+      p style=
+      textarea()
 </template>
 
 <script lang="ts">
@@ -81,6 +91,10 @@
         update[key] = this.itemData[key];
       }
       FirestoreMgr.itemUpdate(this.itemData!.id, update);
+    }
+
+    moduleChange() {
+
     }
   }
 </script>

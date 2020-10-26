@@ -48,4 +48,10 @@
 </script>
 
 <style lang="scss">
+  .picture {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 </style>
